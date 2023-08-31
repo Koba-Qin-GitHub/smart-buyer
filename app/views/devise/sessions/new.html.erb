@@ -7,10 +7,14 @@
       会員情報入力
     </h1>
   </div>
+
+<%# エラーメッセージを表示 %>
   <div class='login-flash-message'>
     <%= flash[:notice] %>
     <%= flash[:alert] %>
   </div>
+
+<%# 入力フォーム %>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">メールアドレス</label>
