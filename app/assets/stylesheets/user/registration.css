@@ -9,6 +9,21 @@
   font-weight: bold;
 }
 
+.top-page-link-btn {
+  width: 100%;
+  color: #000000;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.top-page-btn {
+  width: 50%;
+  margin: 0 auto;
+  text-align: right;
+}
+
 /* 共通ではない---------------------------- */
 .registration-main {
   width: 100%;
@@ -156,3 +171,4 @@
   text-align: right;
   cursor: pointer;
 }
+
