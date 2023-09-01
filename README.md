@@ -4,7 +4,6 @@
 | ------------------------- | --------- | ------------------------- |
 | name                      | string    | null: false               |
 | email                     | string    | null: false, unique: true |
-| password                  | string    | null: false               |
 | encrypted_password        | string    | null: false               |
 | company_id                | integer   | null: false               |
 | birthday                  | date      | null: false               |

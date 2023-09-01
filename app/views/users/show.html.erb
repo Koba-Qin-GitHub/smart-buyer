@@ -1,0 +1,9 @@
+<div>
+  <%= @user.name %>様 マイページ
+</div>
+<div>
+  <%= link_to 'ユーザー情報を編集する', edit_user_path(current_user) %>
+</div>
+<div class='top-page-btn'>
+  <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
+</div>

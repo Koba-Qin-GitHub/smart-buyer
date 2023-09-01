@@ -1,0 +1,66 @@
+<%# <%= render "shared/second-header"%>
+
+<%= form_with model: current_user, class: 'registration-main', local: true do |f| %>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      会員情報  編集
+    </h1>
+  </div>
+
+<%# エラーメッセージを表示 %>
+  <%= render 'shared/error_messages', model: f.object  %>
+
+<%# 入力フォーム %>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">名前</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :name, class:"input-default", id:"name", placeholder:"例) 山田太郎" , rows: 1 %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">メールアドレス</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">生年月日</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-birth-wrap'>
+      <%= raw sprintf(
+                  f.date_select(
+                    :birthday,
+                    class:'select-birth',
+                    id:"birth-date",
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: 1930,
+                    end_year: (Time.now.year - 5),
+                    date_separator: '%s'),
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">会社のカテゴリー</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:company_id, Company.all, :id, :name, {}, {class:"input-default"}) %>
+  </div>
+  <div class="form-group">
+  </div>
+  <div class='register-btn'>
+    <%= f.submit "編集完了" ,class:"register-red-btn" %>
+  </div>
+  <div class='top-page-btn'>
+    <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
+  </div>
+</div>
+<% end %>
+
+<%# <%= render "shared/second-footer" %>
