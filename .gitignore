@@ -30,3 +30,6 @@
 yarn-debug.log*
 .yarn-integrity
 .Ds_Store
+
+# Gitの管理外になる
+/.env
