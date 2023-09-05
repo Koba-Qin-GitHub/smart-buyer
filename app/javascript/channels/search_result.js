@@ -22,7 +22,7 @@ window.onload = function () {                                              // �
 // Mouser_データ取得(非同期通信)
 function ajaxRequest(search_word) {
   $.ajax({
-    url: "https://api.mouser.com/api/v1/search/partnumber?apiKey=" + mouser_apiKey,
+    url: 'https://api.mouser.com/api/v1/search/partnumber?apiKey=${mouser_apiKey}',
     crossDomain: true,
     method: 'post',
     headers: {
@@ -37,9 +37,9 @@ function ajaxRequest(search_word) {
     })
   }).done(function(response) {
 
-    // const result_NumberOfResult = response.SearchResults.NumberOfResult;
+    const result_NumberOfResult = response.SearchResults.NumberOfResult;
 
-    console.log(response);
+    // console.log(response);
     // console.log(result_NumberOfResult);
     
     // Mouser_APIでの「検索結果数」のよる条件分岐
