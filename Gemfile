@@ -67,3 +67,9 @@ gem 'pry-rails'
 
 # エラーメッセージの日本語化で使用
 gem 'rails-i18n'
+
+# JSにおいて、Rubyの環境変数を使用できるGem
+gem 'gon'
+gem 'dotenv-rails'
+
+
