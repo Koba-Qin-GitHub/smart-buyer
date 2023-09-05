@@ -37,10 +37,10 @@ function ajaxRequest(search_word) {
     })
   }).done(function(response) {
 
-    const result_NumberOfResult = response.SearchResults.NumberOfResult;
+    // const result_NumberOfResult = response.SearchResults.NumberOfResult;
 
     console.log(response);
-    console.log(result_NumberOfResult);
+    // console.log(result_NumberOfResult);
     
     // Mouser_APIでの「検索結果数」のよる条件分岐
     if(result_NumberOfResult === 0) {
