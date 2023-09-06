@@ -33,3 +33,5 @@ yarn-debug.log*
 
 # Gitの管理外になる
 /.env
+/localhost.pem
+/localhost-key.pem
