@@ -20,4 +20,10 @@ class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :company
 
+
+
+has_many :items
+has_many :favorites
+# has_many :sites
+
 end
