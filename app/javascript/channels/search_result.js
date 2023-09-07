@@ -11,10 +11,20 @@ window.onload = function () {                                              // �
   document.getElementById('search_form').onsubmit = function(event) { 
     event.preventDefault();
     const search_word = document.getElementById('search_form').word.value;
-
+    document.getElementById('register_word').value = search_word
+    
     ajaxRequest(search_word);
 
 };}
+
+// window.onload = function () {                                              // ページが完全に読み込まれた直後に実行
+//   document.getElementById('search_form').onsubmit = function(event) { 
+//     event.preventDefault();
+//     const search_word = document.getElementById('search_form').word.value;
+
+//     ajaxRequest(search_word);
+
+// };}
 
 
 

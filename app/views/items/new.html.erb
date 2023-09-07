@@ -10,6 +10,31 @@
       <input type="submit" value="検索">
     </form>
   </section>
+
+
+  <div>
+    <%= form_with model: @item, local: true do |f| %>
+      <%= f.text_area :name, class:"hidden", id:"register_word", value:"" %>
+      <div class="">
+        <%= f.submit "登録する", id:"submit", class:"" %>
+        <%=link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
+    <% end %>
+    <%= notice %>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div class="item">
 
     <div class="company_name">
