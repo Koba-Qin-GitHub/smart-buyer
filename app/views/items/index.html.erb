@@ -1,2 +1,19 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<%= render "shared/header" %>
+
+<div>
+
+  <% @items.each do |item| %>
+    <% if current_user.id == item.user.id %> 
+      <div class="register_content">
+        <div class="register_user_name">
+          <%= item.user.name %>
+        </div>
+        <div class="register_item_name">
+          <%= item.name %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+

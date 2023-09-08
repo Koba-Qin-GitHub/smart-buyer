@@ -3,24 +3,18 @@
 <div class="container">
   <section>
     <p>
-    「正式品番」を入力してください（半角のみ、完全一致検索）
+    「正式品番」を入力してください（完全一致検索）
     </p>
-    <form action="#" id="search_form">
-      <input type="text" name="word">
-      <input type="submit" value="検索">
-    </form>
-  </section>
-
-
   <div>
-    <%= form_with model: @item, local: true do |f| %>
-      <%= f.text_area :name, class:"hidden", id:"register_word", value:"" %>
+  <%# 検索フォーム ：検索ボタンのクリックで「item登録」「APIへの検索」の処理が実行%>
+    <%= form_with model: @item, id: "search_form", local: true do |f| %>
+      <%= f.search_field :name, id:"search_word" %>
       <div class="">
-        <%= f.submit "登録する", id:"submit", class:"" %>
+        <%= f.submit "検索する", id:"submit" %>
         <%=link_to 'もどる', root_path, class:"back-btn" %>
       </div>
     <% end %>
-    <%= notice %>
+    <%# <%= notice %>
   </div>
 
 
