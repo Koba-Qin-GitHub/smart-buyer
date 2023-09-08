@@ -9,11 +9,15 @@ class ItemsController < ApplicationController
 
     @item = Item.new
 
+    @items = Item.all
+
   end
 
   def create
     item = Item.create(item_params)
     render json:{ item: item }
+
+    @items = Item.all
 
     # @item = Item.new(item_params)
     # if @item.save

@@ -29,9 +29,16 @@ function post (search_word){
     XHR.send(formData);                             // JavaScript より リクエスト送信
     // console.log("非同期通信OK");
 
-    // XHR.onload = () => {
-    //   console.log(XHR.response);
-    // };
+    XHR.onload = () => {
+      console.log(XHR.response.item.id);
+      const item_id = XHR.response.item.id;
+      const url = document.getElementById("favorite_new").href + "items/" + item_id + "/favorites";
+      console.log(url);
+      document.getElementById('favorite_new').setAttribute('href', url);
+      document.getElementById('favorite_delete').setAttribute('href', url);
+      
+      
+    };
     
   // });
 };

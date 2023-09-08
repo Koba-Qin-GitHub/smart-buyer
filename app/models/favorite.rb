@@ -1,8 +1,8 @@
 class Favorite < ApplicationRecord
 
 
-  validates :user_id
-  validates :item_id
+  # validates :user_id
+  # validates :item_id
 
 
   belongs_to :user

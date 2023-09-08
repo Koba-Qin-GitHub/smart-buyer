@@ -1,11 +1,10 @@
 <%= render "shared/header" %>
 
 <div class="container">
-  <section>
+  <div>
     <p>
     「正式品番」を入力してください（完全一致検索）
     </p>
-  <div>
   <%# 検索フォーム ：検索ボタンのクリックで「item登録」「APIへの検索」の処理が実行%>
     <%= form_with model: @item, id: "search_form", local: true do |f| %>
       <%= f.search_field :name, id:"search_word" %>
@@ -15,7 +14,21 @@
       </div>
     <% end %>
     <%# <%= notice %>
+
+    <%# <% if Item.exists? %> 
+      <%# <%= @items.name %>
+    <%# <% end %> 
+    <div class="favorite_new_btn">
+      <%=link_to "いいねする", root_path, method: :post, id: "favorite_new"%>
+    </div>
+    <div class="favorite_delete_btn">
+      <%=link_to "いいね解除する", root_path, method: :delete, id: "favorite_delete"%>
+    </div>
+    
   </div>
+
+
+ 
 
 
 
@@ -52,6 +65,7 @@
         
       </div>
     </div>
+    
 
   </div>
 </div>

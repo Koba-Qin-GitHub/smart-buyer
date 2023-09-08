@@ -10,8 +10,14 @@ class Item < ApplicationRecord
 
 
   belongs_to :user
-  # has_one :favorite
+  has_many :favorites
   # has_many :item_sites
+
+
+  # すでにお気に入り済みなのか、チェックする
+  def favorited_by_user?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 
 
 end
