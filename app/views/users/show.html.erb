@@ -8,17 +8,22 @@
   <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
 </div>
 
-<div>
-  <% @items.each do |item| %>
-    <% if current_user.id == item.user.id %> 
-      <div class="register_content">
-        <div class="register_user_name">
-          <%= item.user.name %>
+<div class="favorites">
+  <h1>お気に入り登録  一覧</h1>
+  <% if @favorites.exists? %>
+    <% @favorites.each do |favorite| %>
+      <div class="favorite">
+        <div class="">
+          正式品番：<%= favorite.item.name %>
         </div>
-        <div class="register_item_name">
-          <%= item.name %>
+        <div class="">
+          登録日：<%= favorite.created_at.strftime('%Y/%m/%d')%>
         </div>
       </div>
     <% end %>
+  <% else %>
+    <div>
+      お気に入りにしているデータはありません。
+    </div>
   <% end %>
 </div>
