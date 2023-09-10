@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   def show
     set_user
-    @items = Item.all
+    @items = Item.where(user_id: current_user.id)
+    @favorites = Favorite.where(user_id: current_user.id)
   end
 
 

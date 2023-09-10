@@ -22,8 +22,8 @@ class User < ApplicationRecord
 
 
 
-has_many :items
-has_many :favorites
-# has_many :sites
+  has_many :items
+  has_many :favorites
+  # has_many :sites
 
 end
