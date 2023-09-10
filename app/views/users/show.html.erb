@@ -7,3 +7,18 @@
 <div class='top-page-btn'>
   <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
 </div>
+
+<div>
+  <% @items.each do |item| %>
+    <% if current_user.id == item.user.id %> 
+      <div class="register_content">
+        <div class="register_user_name">
+          <%= item.user.name %>
+        </div>
+        <div class="register_item_name">
+          <%= item.name %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

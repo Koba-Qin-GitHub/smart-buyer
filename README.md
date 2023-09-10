@@ -31,7 +31,7 @@
 
 ### Association
 - belongs_to :user
-- has_one :favorite
+- has_many :favorites
 - has_many :item_sites
 
 

@@ -49,6 +49,10 @@
   font-size: 12px;
 }
 
+.hidden{
+  display: none;
+}
+
 
 
 /* 開発環境のみ  ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
@@ -63,3 +67,4 @@
 .item_body{
   background-color: orange;
 }
+

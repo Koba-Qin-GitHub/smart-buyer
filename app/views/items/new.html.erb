@@ -1,15 +1,48 @@
 <%= render "shared/header" %>
 
 <div class="container">
-  <section>
+  <div>
     <p>
-    「正式品番」を入力してください（半角のみ、完全一致検索）
+    「正式品番」を入力してください（完全一致検索）
     </p>
-    <form action="#" id="search_form">
-      <input type="text" name="word">
-      <input type="submit" value="検索">
-    </form>
-  </section>
+  <%# 検索フォーム ：検索ボタンのクリックで「item登録」「APIへの検索」の処理が実行%>
+    <%= form_with model: @item, id: "search_form", local: true do |f| %>
+      <%= f.search_field :name, id:"search_word" %>
+      <%= f.submit "検索する", id:"submit" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    <% end %>
+
+    <%#=  notice %>
+
+    
+
+    <% if user_signed_in? %>
+    <%# if user_signed_in?%>
+      <div id="favorite_new_btn", class="hidden" >
+        <%=link_to "いいねする", root_path, method: :post, id: "favorite_new"%>
+      </div>
+      <div id="favorite_delete_btn", class="hidden" >
+        <%=link_to "いいね解除する", root_path, method: :delete, id: "favorite_delete"%>
+      </div>
+    <% end%>
+    
+  </div>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div class="item">
 
     <div class="company_name">
@@ -33,6 +66,7 @@
         
       </div>
     </div>
+    
 
   </div>
 </div>

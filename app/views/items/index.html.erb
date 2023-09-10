@@ -1,2 +1,64 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+
+
+
+
+<%= render "shared/header" %>
+
+<div class="container">
+
+    <div>
+      「<%= @item.name %>」の検索結果
+    </div>
+
+  <div>
+    <%# <p> %>
+    <%# 「正式品番」を入力してください（完全一致検索） %>
+    <%# </p> %>
+  <%# <% 検索フォーム ：検索ボタンのクリックで「item登録」「APIへの検索」の処理が実行%>
+    <%= form_with model: @item , id: "search_form", class: "hidden", local: true do |f| %>
+      <%= f.search_field :name, id:"search_word" %>
+      <%= f.submit "検索する", id:"submit" %>
+    <% end %>
+
+    <%=link_to '検索画面に戻る', root_path, class:"back-btn" %>
+
+
+    <% if user_signed_in? %>
+      <div id="favorite_new_btn", class="hidden" >
+        <%=link_to "いいねする", root_path, method: :post, id: "favorite_new"%>
+      </div>
+      <div id="favorite_delete_btn", class="hidden" >
+        <%=link_to "いいね解除する", root_path, method: :delete, id: "favorite_delete"%>
+      </div>
+    <% end%>
+    
+  </div>
+
+
+  <div class="item">
+
+    <div class="company_name">
+      <%# <p>Mouser</p> %>
+      <img src="https://www.mouser.jp/images/mouser-reg-logo-trim.png?nosprite">
+    </div>
+
+    <div class="item_content">
+      <div class="item_image">
+        <img src="" id = "result_image">
+      </div>
+      <div class="item_body">
+        <p id = "result_PartNumber">正式品番：</p>
+        <p id = "result_Manufacturer">メーカー：</p>
+        <p id = "result_Stock">在庫数量：</p>
+        <p id = "result_price">単価：</p>
+        <p>
+        Mouser_URL：<a href="#" target="_blank" id = "result_ItemUrl"></a>
+        </p>
+        
+        
+      </div>
+    </div>
+    
+
+  </div>
+</div>
