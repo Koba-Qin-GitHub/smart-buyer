@@ -1,9 +1,15 @@
 class FavoritesController < ApplicationController
   def create
-    # binding.pry
-    
+
     favorite = current_user.favorites.build(item_id: params[:item_id])
-    favorite.save
+    item_search_result = Item.where(name: favorite.item.name)
+    favorite_check = Favorite.where(user_id: current_user.id, item_id: item_search_result).blank? 
+
+    
+    # binding.pry
+    if favorite_check    # ユーザーにとって初めて登録する「正式品番」の場合、保存する
+      favorite.save
+    end
 
 
   #   @favorite = Favorite.new(favorite_params)
@@ -16,9 +22,11 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    # binding.pry
     favorite = Favorite.find_by(item_id: params[:item_id], user_id: current_user.id)
-    favorite.destroy
+
+    if favorite.present?      # favorite に 「値が存在するのか」を判定
+      favorite.destroy
+    end
 
   end
 

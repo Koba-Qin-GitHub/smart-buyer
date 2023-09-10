@@ -14,10 +14,15 @@ class Item < ApplicationRecord
   # has_many :item_sites
 
 
+
   # すでにお気に入り済みなのか、チェックする
-  def favorited_by_user?(user)
-    favorites.where(user_id: user.id).exists?
-  end
+  # def favorited_by?(user)
+  #   favorites.where(user_id: user.id).exists?
+  # end
+
+  # def favorite_check
+  #   favorite.where(user_id: current_user.id, item_id: item.where(name: item.name)).blank? 
+  # end
 
 
 end
