@@ -23,10 +23,13 @@ class FavoritesController < ApplicationController
 
   def destroy
     favorite = Favorite.find_by(item_id: params[:item_id], user_id: current_user.id)
+    favorite.destroy
+    redirect_to request.referer     # 同じページへリダイレクトする
 
-    if favorite.present?      # favorite に 「値が存在するのか」を判定
-      favorite.destroy
-    end
+
+    # if favorite.present?      # favorite に 「値が存在するのか」を判定
+    #   favorite.destroy
+    # end
 
   end
 

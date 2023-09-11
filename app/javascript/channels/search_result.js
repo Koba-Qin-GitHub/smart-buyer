@@ -155,7 +155,7 @@ function favorite(item_id){
 
   
   document.getElementById("favorite_new_btn").classList.remove("hidden");
-  
+  document.getElementById("favorite_delete_btn").classList.add("hidden");
   
   // const favorite_blank_check = gon.favorite_blank_check
   // console.log(favorite_blank_check);
