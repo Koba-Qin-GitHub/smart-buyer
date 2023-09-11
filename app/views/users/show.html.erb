@@ -22,6 +22,9 @@
         <div class="">
           <%=link_to "お気に入りを解除する", item_favorites_path(favorite.item.id), method: :delete, id: "favorite_delete"%>
         </div>
+        <div class="">
+          <%=link_to "リマインド設定をする",  new_favorite_reminder_path(favorite.id), method: :get%>
+        </div>
       </div>
     <% end %>
   <% else %>

@@ -1,0 +1,38 @@
+<h1> reminders / new </h1>
+
+<%= form_with model: @reminder, url: favorite_reminders_path, class: 'registration-main', local: true do |f| %>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h1 class='form-header-text'>
+      リマインド情報入力
+    </h1>
+  </div>
+
+<%# エラーメッセージを表示 %>
+  <%#= render 'shared/error_messages', model: f.object  %>
+
+
+<%# 入力フォーム %>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">リマインド条件</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:case_id, Case.all, :id, :name, {}, {class:"input-default"}) %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">リマインド方法</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.collection_select(:reminder_way_id, ReminderWay.all, :id, :name, {}, {class:"input-default"}) %>
+  </div>
+
+
+  <div class='register-btn'>
+    <%= f.submit "リマインドを登録する" ,class:"register-red-btn" %>
+  </div>
+  <div class='top-page-btn'>
+    <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
+  </div>
+<% end %>
