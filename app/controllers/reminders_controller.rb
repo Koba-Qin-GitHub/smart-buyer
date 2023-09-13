@@ -9,11 +9,20 @@ class RemindersController < ApplicationController
     # binding.pry
     
     @reminder = Reminder.new(reminder_params)
-    
+
     @reminder.save
 
-    redirect_to root_path
+    redirect_to user_path(current_user.id)
     
+
+  end
+
+  def destroy
+    binding.pry
+
+    reminder = Reminder.find_by(favorite_id: params[:favorite_id])
+    reminder.destroy
+    redirect_to request.referer,  notice: 'お気に入り登録を解除しました！'
 
   end
 

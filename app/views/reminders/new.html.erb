@@ -28,10 +28,12 @@
     <%= f.collection_select(:reminder_way_id, ReminderWay.all, :id, :name, {}, {class:"input-default"}) %>
   </div>
 
-
+  
   <div class='register-btn'>
     <%= f.submit "リマインドを登録する" ,class:"register-red-btn" %>
   </div>
+
+
   <div class='top-page-btn'>
     <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
   </div>
