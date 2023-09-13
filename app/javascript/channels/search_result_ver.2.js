@@ -4,17 +4,16 @@ const mouser_apiKey = gon.mouser_apiKey
 
 
 
-// const favorite_blank_check = gon.favorite_blank_check
-
 
 
 // ページが完全に読み込まれた直後に実行
 window.onload = function(){
   // document.getElementById("favorite_new_btn").classList.add("hidden");
   // document.getElementById("favorite_delete_btn").classList.remove("hidden");
-  
+
   search();
-  favorite_btn();
+  // favorite_btn();
+  // favorite_check()
   
 }
 
@@ -28,12 +27,17 @@ window.onload = function(){
 
 // データ取得のイベント(単語入力  → 検索) 
 function search() { 
-  document.getElementById('search_form').onsubmit = function(event) {      // クリックされた時に発動
-    event.preventDefault();
-    const search_word = document.getElementById('search_word').value;
-    console.log("search_OK")
+  // document.getElementById('search_form').onsubmit = function(event) {      // クリックされた時に発動
+    // event.preventDefault();
+    var item = gon.item
+    var search_word = item.name
+    
+    console.log(search_word);
 
-    // setTimeout(gon, 10);
+    // console.log(document.getElementById('search_word'));
+    
+    // const search_word = document.getElementById('search_word').value;
+    // console.log(search_word);
   
 
 
@@ -47,28 +51,28 @@ function search() {
     // }
 
     // 各処理へ分岐
+    // post(search_word);
     ajaxRequest(search_word);
-    post(search_word);
-  };
+  // };
 }
 
 
 
 //itemsテーブルを保存するための非同期通信
-function post (search_word){
-    const form = document.getElementById("search_form");
-    const formData = new FormData(form);
-    const XHR = new XMLHttpRequest();
-    XHR.open("POST", "/items", true);
-    XHR.responseType = "json";
-    XHR.send(formData);                             // JavaScript より リクエスト送信
+// function post (search_word){
+//     const form = document.getElementById("search_form");
+//     const formData = new FormData(form);
+//     const XHR = new XMLHttpRequest();
+//     XHR.open("POST", "/items", true);
+//     XHR.responseType = "json";
+//     XHR.send(formData);                             // JavaScript より リクエスト送信
     
 
-    XHR.onload = () => {
-      const item_id = XHR.response.item.id;
-      favorite(item_id);
-    };
-}
+    // XHR.onload = () => {
+    //   const item_id = XHR.response.item.id;
+    //   favorite(item_id);
+    // };
+// }
 
 
 
@@ -145,37 +149,37 @@ function response_item_info (res) {
 
 
 // お気に入り登録・削除 処理
-function favorite(item_id){
-  const first_url = location.protocol + "//" + location.host   // 「https://localhost:3001/」の取得
-  var url = first_url + "/items/" + item_id + "/favorites";
-  console.log(url);
+// function favorite(item_id){
+//   const first_url = location.protocol + "//" + location.host   // 「https://localhost:3001/」の取得
+//   var url = first_url + "/items/" + item_id + "/favorites";
+//   console.log(url);
 
-  document.getElementById('favorite_new').setAttribute('href', url);
-  document.getElementById('favorite_delete').setAttribute('href', url);
+//   document.getElementById('favorite_new').setAttribute('href', url);
+//   document.getElementById('favorite_delete').setAttribute('href', url);
 
   
-  document.getElementById("favorite_new_btn").classList.remove("hidden");
-  document.getElementById("favorite_delete_btn").classList.add("hidden");
+//   document.getElementById("favorite_new_btn").classList.remove("hidden");
+//   document.getElementById("favorite_delete_btn").classList.add("hidden");
   
   // const favorite_blank_check = gon.favorite_blank_check
   // console.log(favorite_blank_check);
 
-  console.log("お気に入りボタン_URL_OK");
-}
+//   console.log("お気に入りボタン_URL_OK");
+// }
 
 
 // お気に入り登録・削除ボタンの表示切り替え
-function favorite_btn(){
+// function favorite_btn(){
 
-  document.getElementById('favorite_new').onclick = function(){
-    document.getElementById("favorite_new_btn").classList.add("hidden");
-    document.getElementById("favorite_delete_btn").classList.remove("hidden");
-  };
+//   document.getElementById('favorite_new').onclick = function(){
+//     document.getElementById("favorite_new_btn").classList.add("hidden");
+//     document.getElementById("favorite_delete_btn").classList.remove("hidden");
+//   };
 
-  document.getElementById('favorite_delete').onclick = function(){
-    document.getElementById("favorite_new_btn").classList.remove("hidden");
-    document.getElementById("favorite_delete_btn").classList.add("hidden");
-  };
+//   document.getElementById('favorite_delete').onclick = function(){
+//     document.getElementById("favorite_new_btn").classList.remove("hidden");
+//     document.getElementById("favorite_delete_btn").classList.add("hidden");
+//   };
 
   // if(favorite_save_result === true) {
   //   document.getElementById("favorite_new_btn").classList.add("hidden");
@@ -184,7 +188,7 @@ function favorite_btn(){
   //   document.getElementById("favorite_new_btn").classList.remove("hidden");
   //   document.getElementById("favorite_delete_btn").classList.add("hidden");
   // }
-}
+// }
 
 
 

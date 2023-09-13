@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 require('jquery')
-require("channels/search_result")
+require("channels/search_result_ver.2")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
