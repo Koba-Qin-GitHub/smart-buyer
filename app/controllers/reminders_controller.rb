@@ -11,6 +11,7 @@ class RemindersController < ApplicationController
     @reminder = Reminder.new(reminder_params)
 
     @reminder.save
+    ReminderWayMailer.report(@reminder).deliver_now
 
     redirect_to user_path(current_user.id)
     
@@ -18,7 +19,7 @@ class RemindersController < ApplicationController
   end
 
   def destroy
-    binding.pry
+    # binding.pry
 
     reminder = Reminder.find_by(favorite_id: params[:favorite_id])
     reminder.destroy
