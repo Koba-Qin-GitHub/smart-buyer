@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
     
 
     @item = Item.new
+    
+    @favorites = Favorite.where(user_id: current_user.id)
 
     # binding.pry
     
@@ -20,8 +22,11 @@ class ItemsController < ApplicationController
     # puts "OK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     # puts favorite_blank_check
 
+    # binding.pry
     item = Item.create(item_params)
-    render json:{ item: item }
+    # render json:{ item: item }
+    redirect_to item_path(item.id)
+
     
     
     # favorite_blank_check = Favorite.where(user_id: current_user.id, item_id: Item.where(name: item.name)).blank? 
@@ -49,7 +54,14 @@ class ItemsController < ApplicationController
   end
 
   def show
+    # binding.pry
+    set_item
+
+    gon.mouser_apiKey = ENV['MOUSER_API_KEY']
     
+    # binding.pry
+    gon.item = @item
+
 
   end
 
@@ -61,9 +73,9 @@ class ItemsController < ApplicationController
     # params.require(:item).permit(:name, :content, :price, :category_id, :status_id, :delivery_charge_id, :prefecture_id, :shipment_date_id, :image).merge(user_id: current_user.id) 
   end
 
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   # def set_user
   #   @user = User.find(params[:id])

@@ -20,11 +20,17 @@
           登録日：<%= favorite.created_at.strftime('%Y/%m/%d')%>
         </div>
         <div class="">
-          <%=link_to "お気に入りを解除する", item_favorites_path(favorite.item.id), method: :delete, id: "favorite_delete"%>
+          <%=link_to "お気に入りを解除する", "/items/#{favorite.item.id}/favorites/#{favorite.id}/", method: :delete, id: "favorite_delete"%>
         </div>
-        <div class="">
-          <%=link_to "リマインド設定をする",  new_favorite_reminder_path(favorite.id), method: :get%>
-        </div>
+        <% if Reminder.where(favorite_id: favorite.id).blank? %>
+          <div class="">
+            <%=link_to "リマインド設定をする",  new_favorite_reminder_path(favorite.id) %>
+          </div>
+        <% else %>
+          <div class="">
+            <%=link_to "リマインド設定を削除する", favorite_reminder_path(favorite.id), method: :delete %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   <% else %>
