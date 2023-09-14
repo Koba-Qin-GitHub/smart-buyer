@@ -34,13 +34,22 @@ class FavoritesController < ApplicationController
 
   def destroy
 
-    binding.pry
+    # binding.pry
     
     # @favorites = Favorite.where(user_id: current_user.id)
 
     favorite = Favorite.find_by(item_id: params[:item_id], user_id: current_user.id)
-    favorite.destroy
-    redirect_to request.referer
+
+    if Reminder.find_by(favorite_id: favorite.id).blank?
+      favorite.destroy
+      redirect_to request.referer
+    else
+      reminder = Reminder.find_by(favorite_id: favorite.id)
+      reminder.destroy
+      favorite.destroy
+      redirect_to request.referer
+    end
+
 
 
     # if favorite.present?      # favorite に 「値が存在するのか」を判定

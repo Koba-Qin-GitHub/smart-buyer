@@ -8,9 +8,11 @@ class ItemsController < ApplicationController
     
 
     @item = Item.new
-    
-    @favorites = Favorite.where(user_id: current_user.id)
 
+    if user_signed_in?
+      @favorites = Favorite.where(user_id: current_user.id)
+    end
+    
     # binding.pry
     
     
