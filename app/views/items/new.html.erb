@@ -9,7 +9,7 @@
     <%= form_with model: @item, id: "search_form", local: true do |f| %>
       <%= f.search_field :name, id:"search_word", placeholder: "「正式品番」を入力してください（完全一致検索）" %>
       <%= f.submit "検索する", id:"submit" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <%#=link_to 'もどる', root_path, class:"back-btn" %>
     <% end %>
 
     <%#=  notice %>
