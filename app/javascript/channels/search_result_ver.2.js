@@ -99,6 +99,7 @@ function ajaxRequest(search_word) {
   // 非同期通信が成功した時
   }).done(function(response) {
     const result = response.SearchResults.NumberOfResult;
+    // console.log(response);
     // Mouser_APIでの「検索結果数」のよる条件分岐
     if(result === 0) {
       window.alert('「正式品番」として検索しましたが、ヒットしませんでした。');
@@ -121,14 +122,14 @@ function ajaxRequest(search_word) {
 // 検索ヒットが１件の場合
 function response_item_info (res) {
   const result_PartNumber = res.SearchResults.Parts[0].ManufacturerPartNumber;
-  const result_Stock = res.SearchResults.Parts[0].FactoryStock;
+  const result_Stock = res.SearchResults.Parts[0].AvailabilityInStock;
   const result_image = res.SearchResults.Parts[0].ImagePath;
   const result_Manufacturer = res.SearchResults.Parts[0].Manufacturer;
   const result_price = res.SearchResults.Parts[0].PriceBreaks[0].Price;
   const result_ItemUrl = res.SearchResults.Parts[0].ProductDetailUrl;
 
   document.getElementById('result_PartNumber').textContent = `正式品番：${result_PartNumber}`; 
-  document.getElementById('result_Stock').textContent = `在庫数量：${result_Stock}個`; 
+  document.getElementById('result_Stock').textContent = `在庫数量：${result_Stock} 個`; 
   document.getElementById('result_image').src = result_image; 
   document.getElementById('result_Manufacturer').textContent = `メーカー：${result_Manufacturer}`; 
   document.getElementById('result_price').textContent = `　単価　：${result_price}〜`; 
