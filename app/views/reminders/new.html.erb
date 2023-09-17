@@ -1,4 +1,3 @@
-<h1> reminders / new </h1>
 
 <%= form_with model: @reminder, url: favorite_reminders_path, class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
@@ -31,10 +30,9 @@
   
   <div class='register-btn'>
     <%= f.submit "リマインドを登録する" ,class:"register-red-btn" %>
+    <div class='back-page'>
+      <%= link_to '戻る', :back, class:"back-page-btn" %>
+    </div>
   </div>
 
-
-  <div class='top-page-btn'>
-    <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
-  </div>
 <% end %>

@@ -131,7 +131,7 @@ function response_item_info (res) {
   document.getElementById('result_Stock').textContent = `在庫数量：${result_Stock}個`; 
   document.getElementById('result_image').src = result_image; 
   document.getElementById('result_Manufacturer').textContent = `メーカー：${result_Manufacturer}`; 
-  document.getElementById('result_price').textContent = `単価：${result_price}〜`; 
+  document.getElementById('result_price').textContent = `　単価　：${result_price}〜`; 
   document.getElementById('result_ItemUrl').textContent = `${result_ItemUrl}`; 
   document.getElementById('result_ItemUrl').setAttribute('href', result_ItemUrl);
 

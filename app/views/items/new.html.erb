@@ -1,83 +1,192 @@
 <%= render "shared/header" %>
 
-<div class="container">
-  <div>
-    <p>
-    <%# 「正式品番」を入力してください（完全一致検索） %>
-    </p>
-  <%# 検索フォーム ：検索ボタンのクリックで「item登録」「APIへの検索」の処理が実行%>
-    <%= form_with model: @item, id: "search_form", local: true do |f| %>
-      <%= f.search_field :name, id:"search_word", placeholder: "「正式品番」を入力してください（完全一致検索）" %>
-      <%= f.submit "検索する", id:"submit" %>
-      <%#=link_to 'もどる', root_path, class:"back-btn" %>
-    <% end %>
+<% if user_signed_in? %>
 
-    <%#=  notice %>
+  <div class="search_content">
+
+    <div class="item_form">
+    <%# 検索フォーム ：検索ボタンのクリックで「item登録」の処理 が実行%>
+      <%= form_with model: @item, id: "search_form", local: true do |f| %>
+        <%= f.search_field :name, id:"search_word", placeholder: "「正式品番」を入力してください（完全一致検索）" %>
+        <%= f.submit "検索", id:"submit" %>
+        <%#=link_to 'もどる', root_path, class:"back-btn" %>
+      <% end %>
+    </div>
+      <%#= link_to "この商品をお気に入り登録する",  user_path(current_user.id) %>
+
+    <div id="favorite_new_btn", class="hidden" >
+      <%=link_to "お気に入り登録する", root_path, method: :post, id: "favorite_new"%>
+    </div>
+    <div id="favorite_delete_btn", class="hidden" >
+      <%=link_to "お気に入りを解除する", root_path, method: :delete, id: "favorite_delete"%>
+    </div>
 
 
-    <%#= link_to "この商品をお気に入り登録する",  user_path(current_user.id) %>
+  </div>
 
-    
+  <div class="intro_content">
 
-    <% if user_signed_in? %>
-      <div id="favorite_new_btn", class="hidden" >
-        <%=link_to "お気に入り登録する", root_path, method: :post, id: "favorite_new"%>
+    <div class="intro_sub">
+      <div class="sites">
+        <h1 class="sites_title">
+          連携ECサイト - EC sites -
+        </h1>
+        <ul class="site_lists">
+          <li class="site_list">
+            <%= image_tag "https://www.mouser.jp/images/mouser-reg-logo-trim.png?nosprite", class:"site_logo" %>
+            <%# <p>Mouser</p> %>
+          </li>
+        </ul> 
       </div>
-      <div id="favorite_delete_btn", class="hidden" >
-        <%=link_to "お気に入りを解除する", root_path, method: :delete, id: "favorite_delete"%>
-      </div>
+    </div>
 
-      <%# if @favorites.exists? %>
-        <div class="">
-          <%#=link_to "お気に入りした商品のリマインド設定画面へ移動する",  user_path(current_user.id) %>
+    <div class="intro_main">
+      <div class="explain">
+        <div class="explain_background_image">
+          <div class="explain_title">
+            サービス - service -
+          </div>
         </div>
-      <%# <% end %>
 
-    <% end%>
+        <ul class="explain_lists">
 
+          <li class="explain_list">
+            <div class="explain_list_title">
+              <p class="number">1</p>
+              <p class="service_title">APIを活用した「検索力」</p>
+            </div>
+            <div class="explain_content">
+              <div class="explain_list_word">
+                <p>Smart-Buyer の「正式品番」検索で<br>様々なECサイトの検索結果を一覧表示</p>
+              </div>
+              <div class="explain_list_image back_color_white">
+                <%= image_tag "API_2", class:"image1" %>
+                <%= image_tag "search_2", class:"image1" %>
+              </div>
+            </div>
+          </li>
 
-    
+          <li class="explain_list">
+            <div class="explain_list_title">
+              <p class="number">2</p>
+              <p class="service_title">最新情報をすぐに確認できる「お気に入り機能」</p>
+            </div>
+            <div class="explain_content">
+              <div class="explain_list_word">
+                <p>商品をお気に入り登録することで<br>常に最新情報を入手可能</p>
+              </div>
+              <div class="explain_list_image back_color_white">
+                <%= image_tag "graph_2", class:"image2" %>
+              </div>
+            </div>
+          </li>
+          
+          <li class="explain_list">
+            <div class="explain_list_title">
+              <p class="number">3</p>
+              <p class="service_title">在庫状況の変化に応じた「リマインド機能」</p>
+            </div>
+            <div class="explain_content">
+              <div class="explain_list_word">
+                <p>リマインド登録することで<br>在庫状況に応じたリマインド通知が可能</p>
+              </div>
+              <div class="explain_list_image back_color_blue">
+                <%= image_tag "notice_2", class:"image3" %>
+              </div>
+            </div>
+          </li>
+        </ul> 
+      </div>
+    </div>
+  
   </div>
 
+<% else %>
 
- 
+  <div class="intro_content">
+    <div class="intro_main">
+      <div class="explain">
+        <div class="explain_background_image">
+          <div class="explain_title">
+            サービス - service -
+          </div>
+        </div>
 
+        <ul class="explain_lists">
 
+          <li class="explain_list">
+            <div class="explain_list_title">
+              <p class="number">1</p>
+              <p class="service_title">APIを活用した「検索力」</p>
+            </div>
+            <div class="explain_content">
+              <div class="explain_list_word">
+                <p>Smart-Buyer の「正式品番」検索で<br>様々なECサイトの検索結果を一覧表示</p>
+              </div>
+              <div class="explain_list_image back_color_white">
+                <%= image_tag "API_2", class:"image1" %>
+                <%= image_tag "search_2", class:"image1" %>
+              </div>
+            </div>
+          </li>
 
-
-
-
-
-
-
-
-
-
-
-  <div class="item">
-
-    <div class="company_name">
-      <%# <p>Mouser</p> %>
-      <img src="https://www.mouser.jp/images/mouser-reg-logo-trim.png?nosprite">
-    </div>
-
-    <div class="item_content">
-      <div class="item_image">
-        <img src="" id = "result_image">
+          <li class="explain_list">
+            <div class="explain_list_title">
+              <p class="number">2</p>
+              <p class="service_title">最新情報をすぐに確認できる「お気に入り機能」</p>
+            </div>
+            <div class="explain_content">
+              <div class="explain_list_word">
+                <p>商品をお気に入り登録することで<br>常に最新情報を入手可能</p>
+              </div>
+              <div class="explain_list_image back_color_white">
+                <%= image_tag "graph_2", class:"image2" %>
+              </div>
+            </div>
+          </li>
+          
+          <li class="explain_list">
+            <div class="explain_list_title">
+              <p class="number">3</p>
+              <p class="service_title">在庫状況の変化に応じた「リマインド機能」</p>
+            </div>
+            <div class="explain_content">
+              <div class="explain_list_word">
+                <p>リマインド登録することで<br>在庫状況に応じたリマインド通知が可能</p>
+              </div>
+              <div class="explain_list_image back_color_blue">
+                <%= image_tag "notice_2", class:"image3" %>
+              </div>
+            </div>
+          </li>
+        </ul> 
       </div>
-      <div class="item_body">
-        <p id = "result_PartNumber">正式品番：</p>
-        <p id = "result_Manufacturer">メーカー：</p>
-        <p id = "result_Stock">在庫数量：</p>
-        <p id = "result_price">単価：</p>
-        <p>
-        Mouser_URL：<a href="#" target="_blank" id = "result_ItemUrl"></a>
-        </p>
-        
-        
+    </div>
+  
+    <div class="intro_sub">
+      <div class="sites">
+        <h1 class="sites_title">
+          連携ECサイト - EC sites -
+        </h1>
+        <ul class="site_lists">
+          <li class="site_list">
+            <%= image_tag "https://www.mouser.jp/images/mouser-reg-logo-trim.png?nosprite", class:"site_logo" %>
+            <%# <p>Mouser</p> %>
+          </li>
+        </ul> 
       </div>
     </div>
-    
-
+    <div class="intro_user_register">
+      <div class="user_register">
+        <h1 class="user_register_title">
+          <%# 新規登録して、「正式品番」で検索してみよう！ %>
+        </h1>
+        <div class="user_register_btn">
+          <%= link_to '新規登録して、検索してみる', new_user_registration_path, class: "register_btn" %>
+        </div> 
+      </div>
+    </div>
   </div>
-</div>
+
+<% end%>
+

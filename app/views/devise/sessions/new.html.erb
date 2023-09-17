@@ -31,10 +31,11 @@
   </div>
   <div class='login-btn'>
     <%= f.submit "ログイン" ,class:"login-red-btn" %>
+    <div class='back-page'>
+      <%= link_to '戻る', :back, class:"back-page-btn" %>
+    </div>
   </div>
-  <div class='top-page-btn'>
-    <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
-  </div>
+
 </div>
 <% end %>
 

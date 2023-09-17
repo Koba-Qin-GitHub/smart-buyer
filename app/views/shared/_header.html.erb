@@ -1,20 +1,24 @@
-<header class='top-page-header'>
-  <div class='search-bar-contents'>
-    <%# <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %> 
-    </form>
-  </div>
-  <div class='nav'>
-    <ul class='lists-right'>
+<header>
 
-      <% if user_signed_in?  %>
-        <%# <li><%= link_to current_user.nickname, "#", class: "user-nickname" </li> %>
-        <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-      <% else %>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-      <% end %>
-      
+  <div class='hearder-left'>
+    <ul class="header-logo">
+      <li><%= link_to image_tag("smart-buyer_logo4", class:"header-logo-image"), "/" %></li>
+      <li><%= link_to image_tag("smart-buyer_logo5", class:"header-logo-text"), "/" %></li>
     </ul>
   </div>
+
+  <div class='header-right'>
+    <ul class='header-nav'>
+      <% if user_signed_in?  %>
+        <%# <li><%= link_to current_user.nickname, "#", class: "user-nickname" </li> %>
+        <li><%= link_to '検索ページ', root_path, class: "mypage"%></li>
+        <li><%= link_to 'マイページ', user_path(current_user.id), class: "mypage"%></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+      <% else %>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+      <% end %>
+    </ul>
+  </div>
+
 </header>
