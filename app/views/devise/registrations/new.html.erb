@@ -9,7 +9,9 @@
   </div>
 
 <%# エラーメッセージを表示 %>
-  <%= render 'shared/error_messages', model: f.object  %>
+  <div class="error-msg">
+    <%= render 'shared/error_messages', model: f.object  %>
+  </div>
 
 <%# 入力フォーム %>
   <div class="form-group">
@@ -68,19 +70,13 @@
     </div>
     <%= f.collection_select(:company_id, Company.all, :id, :name, {}, {class:"input-default"}) %>
   </div>
-  <div class="form-group">
-    <h2 class='form-bottom-text'>
-      「会員登録」のボタンを押すことにより、
-      <span>利用規約</span>
-      <br>に同意したものとみなします
-    </h2>
-  </div>
   <div class='register-btn'>
     <%= f.submit "会員登録" ,class:"register-red-btn" %>
+    <div class='back-page'>
+      <%= link_to '戻る', :back, class:"back-page-btn" %>
+    </div>
   </div>
-  <div class='top-page-btn'>
-    <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
-  </div>
+ 
 <% end %>
 
 <%# <%= render "shared/second-footer" %>

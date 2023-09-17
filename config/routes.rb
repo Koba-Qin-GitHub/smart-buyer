@@ -3,9 +3,18 @@ Rails.application.routes.draw do
   root to: 'items#new'
   
   resources :users
+
   resources :items do
-    resource :favorites
+    resources :favorites
+
   end
+
+  resources :favorites do
+    resources :reminders
+  end
+  
+
+
 
   
 end

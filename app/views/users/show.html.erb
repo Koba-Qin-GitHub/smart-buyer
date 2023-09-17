@@ -1,32 +1,56 @@
-<div>
-  <%= @user.name %>様 マイページ
-</div>
-<div>
-  <%= link_to 'ユーザー情報を編集する', edit_user_path(current_user) %>
-</div>
-<div class='top-page-btn'>
-  <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
+<%= render "shared/header" %>
+
+<div class="mypage_user_edit">
+  <div class="user_edit_title">
+    <%= @user.name %>様 マイページ
+  </div>
+  <div class="user_info">
+    <%#= @user.name %>
+    <%#= @user.email %>
+    <%#= @user.birthday %>
+    <%#= @user.company.name %>
+  </div>
+  <div>
+    <%= link_to 'ユーザー情報を編集する', edit_user_path(current_user), class:"user_edit_btn" %>
+  </div>
 </div>
 
-<div class="favorites">
-  <h1>お気に入り登録  一覧</h1>
-  <% if @favorites.exists? %>
-    <% @favorites.each do |favorite| %>
-      <div class="favorite">
-        <div class="">
-          正式品番：<%= favorite.item.name %>
+<div class="mypage_contents">
+  <div class="mypage_content">
+    <div class="mypage_favorites_title">
+      <h1>お気に入り登録  一覧</h1>
+    </div>
+    <% if @favorites.exists? %>
+    <div class="mypage_favorites">
+      <% @favorites.each do |favorite| %>
+        <div class="mypage_favorite">
+          <div class="favorite_item_name">
+            正式品番「<%= favorite.item.name %>」
+          </div>
+          <div class="favorite_created">
+            (登録日：<%= favorite.created_at.strftime('%Y/%m/%d')%>)
+          </div>
+          <div class="favorite_icon">
+            <%= image_tag("checkbox_orenge", class:"favorite_icon_image") %>
+          </div>
+          <div class="">
+            <%=link_to "お気に入り 解除", "/items/#{favorite.item.id}/favorites/#{favorite.id}/", class:"favorite_delete_btn", method: :delete, id: "favorite_delete"%>
+          </div>
+          <% if Reminder.where(favorite_id: favorite.id).blank? %>
+            <div class="">
+              <%=link_to "リマインド登録",  new_favorite_reminder_path(favorite.id), class:"remind_set_btn" %>
+            </div>
+          <% else %>
+            <div class="">
+              <%=link_to "リマインド設定 削除", favorite_reminder_path(favorite.id), method: :delete %>
+            </div>
+          <% end %>
         </div>
-        <div class="">
-          登録日：<%= favorite.created_at.strftime('%Y/%m/%d')%>
-        </div>
-        <div class="">
-          <%=link_to "お気に入りを解除する", item_favorites_path(favorite.item.id), method: :delete, id: "favorite_delete"%>
-        </div>
+      <% end %>
+    <% else %>
+      <div class="favorite_log">
+        お気に入りにしているデータはありません。
       </div>
     <% end %>
-  <% else %>
-    <div>
-      お気に入りにしているデータはありません。
-    </div>
-  <% end %>
+  </div>
 </div>

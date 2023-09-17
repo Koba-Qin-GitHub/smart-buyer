@@ -1,0 +1,54 @@
+header{
+  display: flex;
+  background-color: #7AA5D2;
+  align-items: center;
+  /* margin: 20px; */
+  /* border-radius: 20px; */
+}
+
+.
+
+.header-left{
+  /* width: 100px; */
+  /* display: flex; */
+  /* border: 1px solid; */
+  /* margin: 10px; */
+
+}
+
+.header-logo{
+  display: flex;
+}
+
+.header-logo-image{
+  height: 10vh;
+}
+
+.header-logo-text{
+  height: 10vh;
+}
+
+.header-right{
+  width: 100%;
+  font-size: 25px;
+}
+
+.header-nav{
+  display: flex;
+  justify-content: right;
+  margin-right: 10px;
+}
+
+.header-nav > li{
+  padding: 5px 30px;
+  margin: 0px 30px 0px 0px;
+  background-color: #7AA5D2;
+  border: 1px solid #eeeeee;
+}
+
+
+.mypage, .logout, .login, .sign-up{
+  color: #eeeeee;
+  text-decoration: none;
+} 
+

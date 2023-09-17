@@ -1,0 +1,104 @@
+
+
+/* ユーザー情報  編集ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+
+.mypage_user_edit{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.user_edit_title{
+  font-size: 50px;
+  margin: 50px 0px;
+}
+
+
+
+
+.user_edit_btn{
+  padding: 10px;
+  font-size: 20px;
+  color: #eeeeee;
+  background-color: #7AA5D2;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* お気に入り一覧ーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
+
+.mypage_contents{
+  display: flex;
+  justify-content: center;
+  /* background-color: palegreen; */
+  padding-bottom: 600px;
+}
+.mypage_content{
+  /* width: 80%; */
+  /* display: flex; */
+  /* background-color: beige; */
+  text-align: center;
+}
+
+.mypage_favorits_title{
+  /* background-color: blueviolet; */
+  /* display: flex;
+  align-items: center; */
+}
+
+h1 {
+  font-size: 50px;
+  
+}
+
+.mypage_favorites{
+  /* background-color: black; */
+  /* display: flex; */
+}
+
+.mypage_favorite{
+  margin: 50px;
+  padding: 10px 30px;
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+}
+
+.favorite_created{
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.favorite_delete_btn{
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 20px;
+  color: #eeeeee;
+  background-color: orange;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.favorite_log{
+  font-size: 30px;
+  margin: 30px;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 10px;
+}

@@ -56,9 +56,9 @@
   </div>
   <div class='register-btn'>
     <%= f.submit "編集完了" ,class:"register-red-btn" %>
-  </div>
-  <div class='top-page-btn'>
-    <%= link_to 'トップページへ戻る', root_path, class:"top-page-link-btn" %>
+    <div class='back-page'>
+      <%= link_to '戻る', :back, class:"back-page-btn" %>
+    </div>
   </div>
 </div>
 <% end %>
