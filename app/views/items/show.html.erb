@@ -23,7 +23,7 @@
     <% if Favorite.where(user_id: current_user.id, item_id: Item.where(name: @item.name)).blank? %>
     <% else %>
     <div class="favorite_icon">
-      <%= image_tag("checkbox_orenge", class:"favorite_icon_image") %>
+      <%= image_tag("checkbox_orenge.png", class:"favorite_icon_image") %>
     </div>
     <% end %>
 

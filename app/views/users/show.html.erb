@@ -31,7 +31,7 @@
             (登録日：<%= favorite.created_at.strftime('%Y/%m/%d')%>)
           </div>
           <div class="favorite_icon">
-            <%= image_tag("checkbox_orenge", class:"favorite_icon_image") %>
+            <%= image_tag("checkbox_orenge.png", class:"favorite_icon_image") %>
           </div>
           <div class="">
             <%=link_to "お気に入り 解除", "/items/#{favorite.item.id}/favorites/#{favorite.id}/", class:"favorite_delete_btn", method: :delete, id: "favorite_delete"%>
