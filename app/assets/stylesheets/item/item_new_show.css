@@ -57,32 +57,27 @@
   margin-left: 30px;
   margin-right: 10px;
   padding: 30px 0px;
+
   /* background-color: palegreen; */
 }
 
 
 .favorite_icon{
-  /* background-color: #11376B; */
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
 
 }
 
 .favorite_icon_image{
-  /* margin: auto 0px; */
   height: 70px;
 }
 
 .reminder_icon{
-  /* background-color: #11376B; */
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .reminder_icon_image{
-  /* margin: auto 0px; */
   height: 70px;
 }
 
@@ -91,14 +86,16 @@
 .favorite_register{
   display: flex;
   align-items: center;
-
-
+  margin-bottom: 5px;
+  
   /* background-color: palevioletred; */
 }
 
 .reminder_register{
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
+
   /* background-color: peru; */
 }
 
@@ -109,7 +106,6 @@
   padding: 10px;
   margin-left: 10px;
   margin-right: 30px;
-  margin-bottom: 10px;
   font-size: 20px;
   color: #eeeeee;
   border-radius: 5px;
@@ -123,12 +119,13 @@
 }
 
 .favorite_delete_btn{
-  background-color: #eeeeee;
+  background-color: #F8A503;
+  /* background-color: #bc6900;
+  opacity: 0.5; */
 }
 
 .favorite_set_btn{
   background-color: #F8A503;
-  /* opacity: 0.6; */
 }
 
 
@@ -138,7 +135,9 @@
 
 
 .reminder_delete_btn{
-  background-color: #eeeeee;
+  background-color: #7AA5D2;
+  /* background-color: #4b76a3;
+  opacity: 0.5; */
 }
 
 

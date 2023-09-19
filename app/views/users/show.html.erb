@@ -20,38 +20,56 @@
     <div class="mypage_favorites_title">
       <h1>お気に入り登録  一覧</h1>
     </div>
+
     <% if @favorites.exists? %>
-    <div class="mypage_favorites">
-      <% @favorites.each do |favorite| %>
-        <div class="mypage_favorite">
-          <div class="favorite_item_name">
-            正式品番「<%= favorite.item.name %>」
-          </div>
-          <div class="favorite_created">
-            (登録日：<%= favorite.created_at.strftime('%Y/%m/%d')%>)
-          </div>
-          <div class="favorite_icon">
-            <%= image_tag("checkbox_orenge.png", class:"favorite_icon_image") %>
-          </div>
-          <div class="">
-            <%=link_to "お気に入り 解除", "/items/#{favorite.item.id}/favorites/#{favorite.id}/", class:"favorite_delete_btn", method: :delete, id: "favorite_delete"%>
-          </div>
-          <% if Reminder.where(favorite_id: favorite.id).blank? %>
-            <div class="">
-              <%=link_to "リマインド登録",  new_favorite_reminder_path(favorite.id), class:"reminder_set_btn" %>
+      <div class="mypage_favorites">
+
+        <% @favorites.each do |favorite| %>
+          <div class="mypage_favorite">
+
+            <div class="mypage_favorite_info">
+              <div class="favorite_item_name">
+                正式品番「<%= favorite.item.name %>」
+              </div>
+              <div class="favorite_created">
+                (登録日：<%= favorite.created_at.strftime('%Y/%m/%d')%>)
+              </div>
             </div>
-          <% else %>
-            <div class="">
-              <%=link_to "リマインド設定 削除", favorite_reminder_path(favorite.id), method: :delete %>
+
+            <div class="favorite_register">
+              <div class="favorite_icon">
+                <%= image_tag("checkbox_orenge.png", class:"favorite_icon_image") %>
+              </div>
+              <%=link_to "お気に入り 解除", "/items/#{favorite.item.id}/favorites/#{favorite.id}/", class:"favorite_delete_btn btn", method: :delete, id: "favorite_delete"%>
             </div>
-          <% end %>
-        </div>
-      <% end %>
+
+            <div class="reminder_register">
+              <% if Reminder.where(favorite_id: favorite.id).blank? %>
+                <div class="reminder_icon">
+                  <%= image_tag("checkbox_grey.png", class:"reminder_icon_image") %>
+                </div>
+                <%=link_to "リマインド 登録",  new_favorite_reminder_path(favorite.id), class:"reminder_new_btn  btn" %>
+              <% else %>
+                <div class="reminder_icon">
+                  <%= image_tag("checkbox_blue.png", class:"reminder_icon_image") %>
+                </div>
+                  <%#=link_to "リマインド設定 削除", favorite_reminder_path(favorite.id), method: :delete %>
+                  <%#=link_to "リマインド設定", user_path(current_user), class:"reminder_set_btn btn" %> 
+                <%=link_to "リマインド 削除", favorite_reminder_path(favorite.id), method: :delete, class:"reminder_delete_btn btn" %>
+              <% end %>
+            </div>
+
+          </div>
+        <% end %>
+      </div>
     <% else %>
-      <div class="favorite_log">
+
+      <div class="favorite_no_date">
         お気に入りにしているデータはありません。
       </div>
+
     <% end %>
+
   </div>
 </div>
 

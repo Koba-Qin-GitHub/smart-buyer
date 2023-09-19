@@ -41,22 +41,13 @@
 /* お気に入り一覧ーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 
 .mypage_contents{
-  display: flex;
-  justify-content: center;
-  /* background-color: palegreen; */
   padding-bottom: 600px;
 }
 .mypage_content{
-  /* width: 80%; */
-  /* display: flex; */
-  /* background-color: beige; */
   text-align: center;
 }
 
 .mypage_favorits_title{
-  /* background-color: blueviolet; */
-  /* display: flex;
-  align-items: center; */
 }
 
 h1 {
@@ -65,43 +56,46 @@ h1 {
 }
 
 .mypage_favorites{
-  /* background-color: black; */
-  /* display: flex; */
+  margin: 0 auto;
 }
 
 .mypage_favorite{
-  margin: 50px;
+  width: 65%;
+  margin: 50px auto;
   padding: 10px 30px;
   border: 1px solid;
   border-radius: 10px;
   background-color: #ffffff;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 30px;
+}
+
+.mypage_favorite_info{
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
 }
 
 .favorite_created{
   font-size: 20px;
-  margin-right: 20px;
 }
 
-.favorite_delete_btn{
-  padding: 10px;
-  margin-left: 10px;
-  font-size: 20px;
-  color: #eeeeee;
-  background-color: #F8A503;
-  border-radius: 5px;
-  text-decoration: none;
-}
 
-.favorite_log{
+
+
+
+.favorite_no_date{
   font-size: 30px;
   margin: 30px;
   padding: 10px;
   border: 1px solid;
   border-radius: 10px;
 }
+
+
+
 
 
 
