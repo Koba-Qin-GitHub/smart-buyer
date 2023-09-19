@@ -38,7 +38,7 @@
           </div>
           <% if Reminder.where(favorite_id: favorite.id).blank? %>
             <div class="">
-              <%=link_to "リマインド登録",  new_favorite_reminder_path(favorite.id), class:"remind_set_btn" %>
+              <%=link_to "リマインド登録",  new_favorite_reminder_path(favorite.id), class:"reminder_set_btn" %>
             </div>
           <% else %>
             <div class="">
@@ -53,4 +53,8 @@
       </div>
     <% end %>
   </div>
+</div>
+
+<div class="mypage_footer">
+  <%= render "shared/footer" %>
 </div>
