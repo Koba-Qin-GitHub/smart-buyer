@@ -1,91 +1,112 @@
 <%= render "shared/header" %>
 
-<div class="container">
-  <div class="search_content">
-    <div class="item_form">
-    <%# 検索フォーム ：検索ボタンのクリックで「item登録」「APIへの検索」の処理が実行%>
-      <%= form_with model: Item.new, id: "search_form", local: true do |f| %>
-        <%= f.search_field :name, id:"search_word", placeholder: "「正式品番」を入力してください（完全一致検索）" %>
-        <%= f.submit "検索する", id:"submit" %>
-        <%#=link_to 'もどる', root_path, class:"back-btn" %>
-      <% end %>
-    </div>
-  <div>
-
-    <%#=  notice %>
-    <%#= link_to "この商品をお気に入り登録する",  user_path(current_user.id) %>
-      
-  <div class="search_result">
-    <div class="search_word">
-      「正式品番：<%= @item.name%>」
-    </div>
-
-    <% if Favorite.where(user_id: current_user.id, item_id: Item.where(name: @item.name)).blank? %>
-    <% else %>
-    <div class="favorite_icon">
-      <%= image_tag("checkbox_orenge.png", class:"favorite_icon_image") %>
-    </div>
-    <% end %>
-
-
-    <div class="favorite_register">
-      <% if user_signed_in? %>
-        <%# 「お気に入り登録できるのは、同じ商品名で1つだけ」という条件を付加 %>
-        <% if Favorite.where(user_id: current_user.id, item_id: Item.where(name: @item.name)).blank? %>
-          <div>
-            <%=link_to "お気に入り登録", item_favorites_path(@item.id), class:"favorite_new_btn", method: :post %>
-          </div>
-        <% else %>
-          <div id="favorite_delete_btn" >
-            <%#=link_to "お気に入りを解除する", item_favorite_path(@item.id), method: :delete %>
-          </div>
-          <div>
-            <%=link_to "お気に入り設定", user_path(current_user), class:"favorite_set_btn" %> 
-          </div>
-          <div>
-            <%=link_to "リマインド設定", user_path(current_user), class:"remind_set_btn" %> 
-          </div>
+  <div class="container">
+    <div class="search_content">
+      <div class="item_form">
+      <%# 検索フォーム ：検索ボタンのクリックで「item登録」「APIへの検索」の処理が実行%>
+        <%= form_with model: Item.new, id: "search_form", local: true do |f| %>
+          <%= f.search_field :name, id:"search_word", placeholder: "「正式品番」を入力してください（完全一致検索）" %>
+          <%= f.submit "検索する", id:"submit" %>
+          <%#=link_to 'もどる', root_path, class:"back-btn" %>
         <% end %>
-      <% end %>
+      </div>
+    </div>
 
-        <%# if @favorites.exists? %>
-          <div class="">
-            <%#=link_to "お気に入りした商品のリマインド設定画面へ移動する",  user_path(current_user.id) %>
+      <%#=  notice %>
+      <%#= link_to "この商品をお気に入り登録する",  user_path(current_user.id) %>
+        
+    <div class="search_result">
+      <div class="search_word">
+        「正式品番：<%= @item.name%>」
+      </div>
+
+
+
+      <div class="favorite_register">
+        <% if user_signed_in? %>
+
+          <%# 「お気に入り登録できるのは、同じ商品名で1つだけ」という条件を付加 %>
+          <% if Favorite.where(user_id: current_user.id, item_id: Item.where(name: @item.name)).blank? %>
+            <div class="favorite_icon">
+               <%= image_tag("checkbox_grey.png", class:"favorite_icon_image") %>
+            </div>
+              <%=link_to "お気に入り登録", item_favorites_path(@item.id), class:"favorite_new_btn btn", method: :post, id:"favorite_new_btn" %>
+          <% else %>
+            <div class="favorite_icon">
+              <%= image_tag("checkbox_orenge.png", class:"favorite_icon_image") %>
+            </div>
+              <%#=link_to "お気に入りを解除する", item_favorite_path(@item.id), method: :delete %>
+              <%=link_to "お気に入り設定", user_path(current_user), class:"favorite_set_btn btn" %> 
+          <% end %>
+
+        <% end %>
+      </div>
+
+
+      <div class="reminder_register">
+        <% if @favorites.exists? %>
+          <% @favorites.each do |favorite| %>
+
+            <%# お気に入り登録している正式品番 = 現在検索している正式品番が一致したとき %>
+            <% if favorite.item.name == @item.name %>
+              <% if Reminder.where(favorite_id: favorite.id).blank? %>
+                <div class="reminder_icon">
+                  <%= image_tag("checkbox_grey.png", class:"reminder_icon_image") %>
+                </div>
+                <%=link_to "リマインド登録",  new_favorite_reminder_path(favorite.id), class:"reminder_new_btn  btn" %>
+              <% else %>
+                <div class="reminder_icon">
+                  <%= image_tag("checkbox_blue.png", class:"reminder_icon_image") %>
+                </div>
+                <%#=link_to "リマインド設定 削除", favorite_reminder_path(favorite.id), method: :delete %>
+                <%=link_to "リマインド設定", user_path(current_user), class:"reminder_set_btn btn" %> 
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+
+    </div>
+
+    <div class="items">
+      <div class="item">
+
+        <div class="company_name">
+          <%# <p>Mouser</p> %>
+          <img src="https://www.mouser.jp/images/mouser-reg-logo-trim.png?nosprite">
+        </div>
+
+        <div class="item_content">
+
+          <div class="item_image">
+            <img src="" id = "result_Image">
           </div>
-        <%# <% end %>
+
+          <div class="item_body">
+            <p id = "result_PartNumber">正式品番：</p>
+            <p id = "result_Manufacturer">メーカー：</p>
+            <p id = "result_Stock">在庫数量：</p>
+            <p id = "result_Price">　単価　：</p>
+            <p>
+            　Link　：<a href="#" target="_blank" id = "result_ItemUrl"></a>
+            </p>
+          </div>
+
+          <div class="item_stock_judge">
+            <div class="judge_exist, hidden", id="stock_exist">
+              <p>在庫あり</p>
+            </div>
+            <div class="judge_none, hidden", id="stock_none">
+              <p>在庫無し</p>
+            </div>
+          </div>
+            
+        </div>
+      </div>
     </div>
   </div>
 
-
-
-
-
-  <div class="items">
-    <div class="item">
-
-      <div class="company_name">
-        <%# <p>Mouser</p> %>
-        <img src="https://www.mouser.jp/images/mouser-reg-logo-trim.png?nosprite">
-      </div>
-
-      <div class="item_content">
-        <div class="item_image">
-          <img src="" id = "result_image">
-        </div>
-        <div class="item_body">
-          <p id = "result_PartNumber">正式品番：</p>
-          <p id = "result_Manufacturer">メーカー：</p>
-          <p id = "result_Stock">在庫数量：</p>
-          <p id = "result_price">　単価　：</p>
-          <p>
-          　URL　：<a href="#" target="_blank" id = "result_ItemUrl"></a>
-          </p>
-          
-          
-        </div>
-      </div>
-      
-
-    </div>
-  </div>
+<div class="item_show_footer">
+  <%= render "shared/footer" %>
 </div>

@@ -14,15 +14,15 @@
     </div>
       <%#= link_to "この商品をお気に入り登録する",  user_path(current_user.id) %>
 
-    <div id="favorite_new_btn", class="hidden" >
-      <%=link_to "お気に入り登録する", root_path, method: :post, id: "favorite_new"%>
-    </div>
-    <div id="favorite_delete_btn", class="hidden" >
-      <%=link_to "お気に入りを解除する", root_path, method: :delete, id: "favorite_delete"%>
-    </div>
-
+    <%# <div id="favorite_new_bt", class="hidden" > %>
+      <%#=link_to "お気に入り登録する", root_path, method: :post, id: "favorite_new"%>
+    <%# </div> %>
+    <%# <div id="favorite_delete_btn", class="hidden" > %>
+      <%#=link_to "お気に入りを解除する", root_path, method: :delete, id: "favorite_delete"%>
+    <%# </div> %>
 
   </div>
+
 
   <div class="intro_content">
 
@@ -34,7 +34,6 @@
         <ul class="site_lists">
           <li class="site_list">
             <%= image_tag "https://www.mouser.jp/images/mouser-reg-logo-trim.png?nosprite", class:"site_logo" %>
-            <%# <p>Mouser</p> %>
           </li>
         </ul> 
       </div>
@@ -88,7 +87,7 @@
             </div>
             <div class="explain_content">
               <div class="explain_list_word">
-                <p>リマインド登録することで<br>在庫状況に応じたリマインド通知が可能</p>
+                <p>リマインド登録することで<br>在庫状況の変化に応じたリマインド通知が可能</p>
               </div>
               <div class="explain_list_image back_color_blue">
                 <%= image_tag "notice_2.jpg", class:"image3" %>
@@ -178,9 +177,6 @@
     </div>
     <div class="intro_user_register">
       <div class="user_register">
-        <h1 class="user_register_title">
-          <%# 新規登録して、「正式品番」で検索してみよう！ %>
-        </h1>
         <div class="user_register_btn">
           <%= link_to '新規登録して、検索してみる', new_user_registration_path, class: "register_btn" %>
         </div> 
@@ -189,4 +185,6 @@
   </div>
 
 <% end%>
+
+<%= render "shared/footer" %>
 

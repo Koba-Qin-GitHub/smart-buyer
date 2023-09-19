@@ -3,8 +3,8 @@
 
 
 /* item new,show(サインイン)--------------------------------------------- */
-.items{
-
+.intro_content{
+  /* margin-bottom: 600px; */
 }
 
 .item{
@@ -20,8 +20,8 @@
 }
 
 .search_content{
-  /* display: flex; */
-  /* text-align: center; */
+  /* padding-bottom: 600px; */
+  /* background-color: #ffffff; */
 }
 
 .item_form{
@@ -49,13 +49,13 @@
   display: flex;
   align-items: center;
   
-  /* background-color: #ea352d; */
+  /* background-color: #7AA5D2; */
 }
 
 .search_word{
   font-size: 30px;
   margin-left: 30px;
-  margin-right: 0;
+  margin-right: 10px;
   padding: 30px 0px;
   /* background-color: palegreen; */
 }
@@ -66,9 +66,22 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+
 }
 
 .favorite_icon_image{
+  /* margin: auto 0px; */
+  height: 70px;
+}
+
+.reminder_icon{
+  /* background-color: #11376B; */
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.reminder_icon_image{
   /* margin: auto 0px; */
   height: 70px;
 }
@@ -77,40 +90,61 @@
 
 .favorite_register{
   display: flex;
-  margin-bottom: 10px;
+  align-items: center;
+
+
+  /* background-color: palevioletred; */
+}
+
+.reminder_register{
+  display: flex;
+  align-items: center;
+  /* background-color: peru; */
 }
 
 
-.favorite_new_btn{
+
+
+.btn{
   padding: 10px;
-  margin-left: 80px;
+  margin-left: 10px;
+  margin-right: 30px;
+  margin-bottom: 10px;
   font-size: 20px;
   color: #eeeeee;
-  background-color: orange;
   border-radius: 5px;
   text-decoration: none;
-  
+
+  /* background-color: #A8D93D; */
+}
+
+.favorite_new_btn{
+  background-color: #F8A503;
+}
+
+.favorite_delete_btn{
+  background-color: #eeeeee;
 }
 
 .favorite_set_btn{
-  padding: 10px;
-  margin-left: 10px;
-  font-size: 20px;
-  color: #eeeeee;
-  background-color: orange;
-  border-radius: 5px;
-  text-decoration: none;
-  
+  background-color: #F8A503;
+  /* opacity: 0.6; */
 }
-.remind_set_btn{
-  padding: 10px;
-  margin-left: 30px;
-  font-size: 20px;
-  color: #eeeeee;
+
+
+.reminder_new_btn{
   background-color: #7AA5D2;
-  border-radius: 5px;
-  text-decoration: none;
-  
+}
+
+
+.reminder_delete_btn{
+  background-color: #eeeeee;
+}
+
+
+.reminder_set_btn{
+  background-color: #7AA5D2;
+  /* opacity: 0.6; */
 }
 
 
@@ -122,7 +156,8 @@
 
 .company_name{
   /* width: 50%; */
-  font-size: 50px;
+  height: 30%;
+  /* font-size: 50px; */
   margin: 0px auto;
   
   /* text-align: center; */
@@ -130,34 +165,85 @@
 }
 
 .item_content{
+  height: 70%;
   display: flex;
+  /* background-color: #F8A503; */
 }
 
 .item_image{
-  margin: 20px;
+  width: 15%;
+  margin: 20px 10px;
+  /* background-color: palegoldenrod; */
+  text-align: center;
   
-  width: 150px;
+  /* width: 150px; */
   /* height: 100px;  */
+}
+
+#result_Image{
+  height: 90%;
+  
 }
 
 
 .item_body{
-  width: 80%;
-  font-size: 20px;
+  width: 70%;
+  font-size: 22px;
+  /* background-color: palegreen; */
   
 }
 
 .item_body > p {
+  width: 100%;
   margin-bottom: 10px;
 }
 
 #result_ItemUrl{
-  font-size: 12px;
+  text-decoration: none;
 }
 
 .hidden{
   display: none;
 }
+
+.item_stock_judge{
+  width: 15%;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  /* background-color: paleturquoise; */
+}
+
+.judge_exist{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 20px;
+  color: #ffffff;
+
+  background-color: #A8D93D;
+}
+
+.judge_none{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 20px;
+  color: #ffffff;
+
+  background-color: #ea352d;
+}
+
+
+
+
+
 
 
 
@@ -169,6 +255,7 @@
 .intro_content{
   /* display: flex; */
   padding-bottom: 500px;
+  background-color: #E9EEF6;;
 }
 
 .intro_main{
@@ -205,7 +292,8 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  margin: 20px 0;
+  margin: 30px 0;
+  
 }
 
 .number{
@@ -218,12 +306,14 @@
 .service_title{
   padding: 0 20px;
   background-color: #ffffff;
+  box-shadow: 10px 10px 15px -5px gray;
 }
 
 .explain_content{
   display: flex;
   /* text-align: center; */
   height: 300px;
+  /* box-shadow: 10px 10px 15px -15px; */
   
 }
 
@@ -344,10 +434,6 @@
   /* background-color: #7AA5D2; */
 }
 
-.user_register_title{
-  color: #ffffff;
-}
-
 .user_register_btn{
   text-align: center;
   margin-top: 100px;
@@ -362,24 +448,6 @@
   border-radius: 10px;
 }
 
-
-/* 開発環境のみ  ーーーーーーーーーーーーーーーーーーーーーーーーーーー */
-
-.item_content{
-  /* background-color: blanchedalmond; */
-}
-
-.item_image{
-  /* background-color: red; */
-}
-.item_body{
-  /* background-color: orange; */
-}
-
-.intro_content{
-  background-color: #E9EEF6;
-}
-
-.explain_list_image{
-  /* background-color: palevioletred; */
+.item_show_footer{
+  margin-top: 500px;
 }

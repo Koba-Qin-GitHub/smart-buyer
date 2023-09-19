@@ -13,7 +13,9 @@ class RemindersController < ApplicationController
     @reminder.save
     ReminderWayMailer.report(@reminder).deliver_now
 
-    redirect_to user_path(current_user.id)
+    # binding.pry
+    redirect_to "/items/#{@reminder.favorite.item.id}/"
+    # redirect_to user_path(current_user.id)
     
 
   end
@@ -23,7 +25,7 @@ class RemindersController < ApplicationController
 
     reminder = Reminder.find_by(favorite_id: params[:favorite_id])
     reminder.destroy
-    redirect_to request.referer,  notice: 'お気に入り登録を解除しました！'
+    redirect_to request.referer
 
   end
 

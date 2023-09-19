@@ -56,12 +56,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # binding.pry
     set_item
-
-    gon.mouser_apiKey = ENV['MOUSER_API_KEY']
+    
+    # set_favorite
+    @favorites = Favorite.where(user_id: current_user.id)
     
     # binding.pry
+
+    # JavaScriptへ情報を渡す
+    gon.mouser_apiKey = ENV['MOUSER_API_KEY']
     gon.item = @item
 
 
@@ -77,6 +80,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_favorite
+    @favorite = Favorite.where(user_id: current_user.id, item_id: Item.where(name: @item.name))
   end
 
   # def set_user
