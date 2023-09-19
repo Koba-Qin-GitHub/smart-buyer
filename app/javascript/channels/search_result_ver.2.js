@@ -12,7 +12,7 @@ window.onload = function(){
   // document.getElementById("favorite_delete_btn").classList.remove("hidden");
 
   search();
-  // favorite_btn();
+  // favorite_new_btn();
   // favorite_check()
   
 }
@@ -98,7 +98,7 @@ function ajaxRequest(search_word) {
 
   // 非同期通信が成功した時
   }).done(function(response) {
-    const result = response.SearchResults.NumberOfResult;
+    var result = response.SearchResults.NumberOfResult;
     // console.log(response);
     // Mouser_APIでの「検索結果数」のよる条件分岐
     if(result === 0) {
@@ -121,20 +121,42 @@ function ajaxRequest(search_word) {
 
 // 検索ヒットが１件の場合
 function response_item_info (res) {
-  const result_PartNumber = res.SearchResults.Parts[0].ManufacturerPartNumber;
-  const result_Stock = res.SearchResults.Parts[0].AvailabilityInStock;
-  const result_image = res.SearchResults.Parts[0].ImagePath;
-  const result_Manufacturer = res.SearchResults.Parts[0].Manufacturer;
-  const result_price = res.SearchResults.Parts[0].PriceBreaks[0].Price;
-  const result_ItemUrl = res.SearchResults.Parts[0].ProductDetailUrl;
+  var result_PartNumber = res.SearchResults.Parts[0].ManufacturerPartNumber;
+  var result_Stock = res.SearchResults.Parts[0].AvailabilityInStock;
+  var result_Image = res.SearchResults.Parts[0].ImagePath;
+  var result_Manufacturer = res.SearchResults.Parts[0].Manufacturer;
+  var result_Price = res.SearchResults.Parts[0].PriceBreaks[0].Price;
+  var result_ItemUrl = res.SearchResults.Parts[0].ProductDetailUrl;
 
   document.getElementById('result_PartNumber').textContent = `正式品番：${result_PartNumber}`; 
   document.getElementById('result_Stock').textContent = `在庫数量：${result_Stock} 個`; 
-  document.getElementById('result_image').src = result_image; 
+  document.getElementById('result_Image').src = result_Image; 
   document.getElementById('result_Manufacturer').textContent = `メーカー：${result_Manufacturer}`; 
-  document.getElementById('result_price').textContent = `　単価　：${result_price}〜`; 
-  document.getElementById('result_ItemUrl').textContent = `${result_ItemUrl}`; 
+  document.getElementById('result_Price').textContent = `　単価　：${result_Price}〜`; 
+  document.getElementById('result_ItemUrl').textContent = `ECサイト商品詳細ページへ`; 
   document.getElementById('result_ItemUrl').setAttribute('href', result_ItemUrl);
+
+
+
+  // 「在庫あり」「在庫無し」判定の表示
+  const judge_exist = document.getElementById("stock_exist")
+  const judge_none = document.getElementById("stock_none")
+  
+  if(result_Stock === 0) {
+    // # 「在庫あり」を表示
+    judge_none.classList.remove("hidden");
+    judge_none.classList.add("judge_none");
+    
+  } else if(result_Stock >= 1) {
+    
+    // # 「在庫無し」を表示
+    judge_exist.classList.remove("hidden");
+    judge_exist.classList.add("judge_exist");
+
+  } else {
+
+  }
+
 
   console.log("mouser_レスポンスOK");
   // console.log(favorite_blank_check);
@@ -142,7 +164,7 @@ function response_item_info (res) {
 }
 
 
-// 検索ヒットが２件以上の場合
+
 
 
 
@@ -169,18 +191,29 @@ function response_item_info (res) {
 // }
 
 
-// お気に入り登録・削除ボタンの表示切り替え
-// function favorite_btn(){
+// お気に入り登録 アニメーション
+function favorite_new_btn(){
+  console.log("OK!");
+  const favorite_new = document.getElementById("favorite_new_btn");
+  favorite_new.addEventListener("click", (e) => {
+    e.preventDefault();
 
-//   document.getElementById('favorite_new').onclick = function(){
-//     document.getElementById("favorite_new_btn").classList.add("hidden");
-//     document.getElementById("favorite_delete_btn").classList.remove("hidden");
-//   };
+    console.log("favorite_new_btn OK!!!");
+  });
+  // };
+  
+  // document.getElementById('favorite_new_btn').onsubmit = function(event) {      // クリックされた時に発動
+  //   event.preventDefault();
+  
+  // document.getElementById("favorite_icon").classList.remove("hidden");
+  // document.getElementById("favorite_icon").classList.add("favorite_icon");
 
-//   document.getElementById('favorite_delete').onclick = function(){
-//     document.getElementById("favorite_new_btn").classList.remove("hidden");
-//     document.getElementById("favorite_delete_btn").classList.add("hidden");
-//   };
+  // };
+
+  // document.getElementById('favorite_delete').onclick = function(){
+  //   document.getElementById("favorite_new_btn").classList.remove("hidden");
+  //   document.getElementById("favorite_delete_btn").classList.add("hidden");
+  // };
 
   // if(favorite_save_result === true) {
   //   document.getElementById("favorite_new_btn").classList.add("hidden");
@@ -189,7 +222,7 @@ function response_item_info (res) {
   //   document.getElementById("favorite_new_btn").classList.remove("hidden");
   //   document.getElementById("favorite_delete_btn").classList.add("hidden");
   // }
-// }
+}
 
 
 
