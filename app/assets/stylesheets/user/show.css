@@ -90,7 +90,7 @@ h1 {
   margin-left: 10px;
   font-size: 20px;
   color: #eeeeee;
-  background-color: orange;
+  background-color: #F8A503;
   border-radius: 5px;
   text-decoration: none;
 }
@@ -101,4 +101,11 @@ h1 {
   padding: 10px;
   border: 1px solid;
   border-radius: 10px;
+}
+
+
+
+.mypage_footer{
+  margin-top: 500px;
+  background-color: #7AA5D2;
 }
