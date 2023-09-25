@@ -1,111 +1,174 @@
 
-## users テーブル 
-| Column                    | Type      | Options                   |
-| ------------------------- | --------- | ------------------------- |
-| name                      | string    | null: false               |
-| email                     | string    | null: false, unique: true |
-| encrypted_password        | string    | null: false               |
-| company_id                | integer   | null: false               |
-| birthday                  | date      | null: false               |
+# アプリケーション名
+[![Image from Gyazo](https://i.gyazo.com/fbf09d9ae2b0929b806ed7f3dbada278.png)](https://gyazo.com/fbf09d9ae2b0929b806ed7f3dbada278)
+
+<br>
+<br>
+
+# アプリケーション概要
+「買いたい時」に「賢く買える」アプリケーション
+
+<br>
+<br>
+
+# URL
+https://smart-buyer.onrender.com/
+
+<br>
+<br>
+
+# テスト用アカウント
+ - Basic認証ID：admin
+ - Basic認証パスワード：pass29430
+ - メールアドレス：test@gmail.com
+ - パスワード：pass123
+
+<br>
+<br>
+
+# 利用方法
+### 商品の検索
+1. トップページより、ユーザーの新規登録を行う
+2. 欲しい商品の正式品番を入力し、検索ボタンをクリックする
+3. 連携している各ECサイトにおける商品情報が一覧表示される
+4. 購入する場合は、URLをクリックし、各ECサイトの商品ページへ遷移する
+
+### 商品のお気に入り登録
+1. 欲しい商品を検索し、まだお気に入り登録していない場合、「お気に入り登録」ボタンが出力される
+2. 「お気に入り登録」ボタンをクリックし、お気に入り登録する
+3. マイページへ行くと、お気に入りにした商品が一覧表示されている
+
+<br>
+<br>
+
+# アプリケーションを作成した背景
+前職の資材調達部門では、商社やECサイトから部品を購入していました。商社から入手できない品薄な部品を他の企業よりも先に入手したいため、複数のECサイトで、1日に1回など定期的に在庫の有無をチェックしていましたが、在庫が無いことがほとんどでした。もし、在庫があった場合には、最安値で購入するために複数のECサイトで価格を調査し、最安値のECサイトで購入していました。 <br> しかし、これらの在庫確認、価格調査に、1部品で10分程度かかっており、毎日調査したい部品は、10種類以上ありました。 <br> これらの経験から、いち早く入手したいがゆえの在庫確認の無駄足、各ECサイトでの価格調査などのムダを省きたいと思うようになりました。 <br> そして、連携しているECサイトでの商品情報が一覧表示される「検索機能」、在庫が復活した時に通知してくれる「リマインド機能」などを実装することにより、「買いたい時」に「賢く買える」アプリケーションを開発したい思い、開発を決意しました。
 
 
-### Association
-- has_many :items
-- has_many :favorites
-- has_many :sites
+<br>
+<br>
+
+# 洗い出した要件
+https://docs.google.com/spreadsheets/d/1MKqWAkcFBolx6_V2gCy3e22MvRm1kQ-FrRIy0AiDmHE/edit#gid=1879645725
+
+<br>
+<br>
+
+# 主なページと実装した機能の説明
+
+| Topページ | 検索ページ |
+| :--------: | :--------: |
+| [![Image from Gyazo](https://i.gyazo.com/6793ed95bd3f1a8aba71596f69e1cc5e.png)](https://gyazo.com/6793ed95bd3f1a8aba71596f69e1cc5e) | [![Image from Gyazo](https://i.gyazo.com/890db82eae6cab1bda676256e824909f.png)](https://gyazo.com/890db82eae6cab1bda676256e824909f) |
+| サービスの特徴が伝わりやすいように、わかりやすい言葉や画像を選択しました。さらに、連携しているECサイトを載せる事でユーザーにとって使い勝手が良くなるように工夫しました。 | 「どういったユーザーがどういう部品を検索したのか」などのデータを収集するために検索機能の使用にはユーザー新規登録を必須としました。さらに、検索バーの直下に連携ECサイトを載せる事で、「どのECサイトの検索結果が表示されるのか」をわかるようにしました。 |
 
 
+| ユーザー登録ページ | ユーザー登録ページ（エラーメッセージ 有り） |
+| :---: | :---: |
+| [![Image from Gyazo](https://i.gyazo.com/fc812cc3437c5bdb5dd553031aac11b2.png)](https://gyazo.com/fc812cc3437c5bdb5dd553031aac11b2) | [![Image from Gyazo](https://i.gyazo.com/d937eb3f4dfeb55aeb3c499cb43f9ba6.png)](https://gyazo.com/d937eb3f4dfeb55aeb3c499cb43f9ba6) |
+| 「生年月日」や「会社のカテゴリー」を必須にすることで、「どういった年齢のどういった業種のユーザーがどういった商品を探しているのか」というデータを収集でき、ユーザーをより知る事で、サービスの質向上のヒントになると考えました。 | 適切な入力していない箇所に関して、日本語のエラーメッセージが出力されるようにしました。 |
 
 
-
-------------------------------------------------------------------------------------------------------------------
-## items テーブル
-| Column                    | Type       | Options                         |
-| ------------------------- | ---------- | ------------------------------- |
-| name                      | string     | null: false                     |
-| content                   | text       | null: false                     |
-| price                     | integer    | null: false                     |
-| quantity                  | integer    | null: false                     |
-| user                      | references | null: false, foreign_key: true  |
+| ログインページ | ログインページ（エラーメッセージ 有り） |
+| :---: | :---: |
+| [![Image from Gyazo](https://i.gyazo.com/e26de4a67d3bc7c161f271c776a71c26.png)](https://gyazo.com/e26de4a67d3bc7c161f271c776a71c26) | [![Image from Gyazo](https://i.gyazo.com/98b8fbb93a42ee0daff825f4cacd3a78.png)](https://gyazo.com/98b8fbb93a42ee0daff825f4cacd3a78) |
+| 最低限のユーザー情報の入力のみで、簡単にログインできるようにしました。 | 適切な入力していない箇所に関して、日本語のエラーメッセージが出力されるようにしました。 |
 
 
-### Association
-- belongs_to :user
-- has_many :favorites
-- has_many :item_sites
+| 検索結果ページ（お気に入り登録 前） | 検索結果ページ（お気に入り登録 後） |
+| :---: | :---: |
+| [![Image from Gyazo](https://i.gyazo.com/85a858e5705fec91e4995fb86e371b06.png)](https://gyazo.com/85a858e5705fec91e4995fb86e371b06) | [![Image from Gyazo](https://i.gyazo.com/14ee63304a340cfc88959b556f12930f.png)](https://gyazo.com/14ee63304a340cfc88959b556f12930f) |
+| 連携しているECサイトの検索結果として、商品画像や在庫数量だけでなく、ECサイトへ遷移するLinkも表示することで、ユーザーがすぐに商品を購入できるようにしました。さらに、在庫の有無が一目でわかるように在庫の表示を作成しました。 | お気に入り登録することで、白黒のチェックボックスがオレンジに変化する事で、お気に入りにしている状態が分かりやすいようにしました。 |
 
 
-
-------------------------------------------------------------------------------------------------------------------
-## item_sites テーブル
-| Column                    | Type       | Options                         |
-| ------------------------- | ---------- | ------------------------------- |
-| item                      | references | null: false, foreign_key: true  |
-| site                      | references | null: false, foreign_key: true  |
+| マイページ、お気に入り登録一覧表示ページ | ユーザー情報編集ページ |
+| :---: | :---: |
+| [![Image from Gyazo](https://i.gyazo.com/da52ea6eac99c671c90a91457010682e.png)](https://gyazo.com/da52ea6eac99c671c90a91457010682e) | [![Image from Gyazo](https://i.gyazo.com/fc82ffa5edb0503abfde9227fea2ff23.png)](https://gyazo.com/fc82ffa5edb0503abfde9227fea2ff23) |
+| ユーザー情報の編集とお気に入り登録の一覧のみというシンプルな構成にしました。お気に入りは、登録日を表記する事で、ユーザーがいつ登録したのかがわかるようにしました。 | ユーザーが登録した情報を編集できるようにしました。 |
 
 
-### Association
-- belongs_to :item
-- belongs_to :site
+<br>
+<br>
+
+# 実装予定の機能
+
+#### 検索機能
+ - 連携ECサイト数の増加
+
+ <br>
+
+#### お気に入り機能
+ - お気に入り登録した商品の各ECサイトの在庫数量の定期的な自動取得と保存の実装
+ - 取得した在庫数量の表またはグラフ化の実装
+
+ <br>
+ 
+#### リマインド機能
+ - リマインド条件の実装（在庫数量が前回取得したものより増えた場合 など）
+ - リマインド方法の実装（メール送信、LINE通知 ）
+
+ <br>
+ 
+#### その他
+ - ユーザー パスワード再発行機能の実装
+
+<br>
+<br>
+
+# データベース設計
+[![Image from Gyazo](https://i.gyazo.com/fd65f543effd4f4e341e5c77194e3afd.png)](https://gyazo.com/fd65f543effd4f4e341e5c77194e3afd)
+
+<br>
+<br>
+
+# 画面遷移図
+[![Image from Gyazo](https://i.gyazo.com/8a88dbd5a5760f3db47e91be171322c7.png)](https://gyazo.com/8a88dbd5a5760f3db47e91be171322c7)
+
+<br>
+<br>
+
+# 開発環境
+#### フロントエンド
+ - HTML
+ - CSS
+ - JavaScript
+ - Ruby 2.6.5
+ - Ruby on Rails 6.0.4.1
+
+#### バックエンド
+ - Ruby 2.6.5
+ - Ruby on Rails 6.0.4.1
+
+#### インフラ
+ - render
+
+#### テスト
+ - RSpec 3.12
+
+#### テキストエディタ
+ - Visual Studio Code 1.81.1
+
+#### タスク管理
+ - GitHub
 
 
+<br>
+<br>
 
+# 工夫したポイント
+#### 1. 競合を意識したアプリ開発
+Smart-Buyerを今後、「様々な人たちに便利に使ってもらうため」にも、価格比較サイトとして有名な「価格.com」を競合相手と想定してアプリ開発を行いました。
+競合相手を設けたことで、下記のようなアプリ開発をすることができました。
+1. プログラミングだけでなく、ビジネスを意識したアプリ開発
+2. 競合の強み、弱みを分析したからこそ、Smart-Buyerの強み（UI、機能など）を意識したアプリ開発
 
+<br>
 
-------------------------------------------------------------------------------------------------------------------
-## sites テーブル
-| Column                    | Type       | Options                         |
-| ------------------------- | ---------- | ------------------------------- |
-| name                      | string     | null: false                     |
-| content                   | text       | null: false                     |
-| user                      | references | null: false, foreign_key: true  |
+#### 2. ユーザー目線のアプリ開発
+自分や前職のチームメンバーが困っていた事や、こんな機能があったらいいなという理想を踏まえてアプリ開発を行いました。さらに前職の上司にもフェードバックをもらった事で、よりユーザー目線の意見を参考にすることができ、ユーザーにとって便利に使ってもらえるようにアプリ開発を行いました。
 
+<br>
 
-### Association
-- belongs_to :user
-- has_many :item_sites
+#### 3. サービスの質向上を踏まえたデータ収集
+ユーザー新規登録における「生年月日」「会社のカテゴリー」の必須入力や「商品検索したらテーブル上に検索データが保存される仕組み」を利用し、現在使用していただいているユーザーの特性を知ることができるデータを収集できるようにしました。まずは現在使用していただいているユーザーの特性を知ることによって、今後、ユーザーに対してサービスの質向上に繋がるのではないか、と考え、ユーザーの特性を知ることに繋がるデータの収集を心がけてアプリ開発を行いました。
 
-
-
-
-
-------------------------------------------------------------------------------------------------------------------
-## favorites テーブル
-| Column                    | Type       | Options                         |
-| ------------------------- | ---------- | ------------------------------- |
-| user                      | references | null: false, foreign_key: true  |
-| item                      | references | null: false, foreign_key: true  |
-
-
-### Association
-- belongs_to :user
-- belongs_to :item
-- has_one    :reminder
-
-
-
-
-------------------------------------------------------------------------------------------------------------------
-## reminders テーブル
-| Column                    | Type       | Options                         |
-| ------------------------- | ---------- | ------------------------------- |
-| case_id                   | integer    | null: false                     |
-| reminder_way_id           | integer    | null: false                     |
-| favorite_id               | references | null: false, foreign_key: true  |
-
-
-### Association
-- belongs_to :favorite
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br>
