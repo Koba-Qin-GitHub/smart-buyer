@@ -1,4 +1,4 @@
-<%# <%= render "shared/second-header"%>
+<%= render "shared/second-header"%>
 
 <%= form_with model: @user, url: user_registration_path , class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
@@ -8,12 +8,12 @@
     </h1>
   </div>
 
-<%# エラーメッセージを表示 %>
+  <%# エラーメッセージを表示 %>
   <div class="error-msg">
     <%= render 'shared/error_messages', model: f.object  %>
   </div>
 
-<%# 入力フォーム %>
+  <%# 入力フォーム %>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">名前</label>
@@ -77,6 +77,7 @@
     </div>
   </div>
  
+</div>
 <% end %>
 
-<%# <%= render "shared/second-footer" %>
+<%= render "shared/second-footer" %>

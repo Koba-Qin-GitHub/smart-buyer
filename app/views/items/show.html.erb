@@ -12,7 +12,7 @@
       </div>
     </div>
 
-      <%#=  notice %>
+
       <%#= link_to "この商品をお気に入り登録する",  user_path(current_user.id) %>
         
     <div class="search_result">
@@ -51,15 +51,15 @@
             <% if favorite.item.name == @item.name %>
               <% if Reminder.where(favorite_id: favorite.id).blank? %>
                 <div class="reminder_icon">
-                  <%= image_tag("checkbox_grey.png", class:"reminder_icon_image") %>
+                  <%#= image_tag("checkbox_grey.png", class:"reminder_icon_image") %>
                 </div>
-                <%=link_to "リマインド登録",  new_favorite_reminder_path(favorite.id), class:"reminder_new_btn  btn" %>
+                <%#=link_to "リマインド登録",  new_favorite_reminder_path(favorite.id), class:"reminder_new_btn  btn" %>
               <% else %>
                 <div class="reminder_icon">
-                  <%= image_tag("checkbox_blue.png", class:"reminder_icon_image") %>
+                  <%#= image_tag("checkbox_blue.png", class:"reminder_icon_image") %>
                 </div>
                 <%#=link_to "リマインド設定 削除", favorite_reminder_path(favorite.id), method: :delete %>
-                <%=link_to "リマインド設定", user_path(current_user), class:"reminder_set_btn btn" %> 
+                <%#=link_to "リマインド設定", user_path(current_user), class:"reminder_set_btn btn" %> 
               <% end %>
             <% end %>
           <% end %>
@@ -79,7 +79,9 @@
 
         <div class="item_content">
 
-          <div class="item_image">
+          <%# # Mouser_APIのレスポンス(JavaScript) %>
+
+          <%# <div class="item_image">
             <img src="" id = "result_Image">
           </div>
 
@@ -91,15 +93,43 @@
             <p>
             　Link　：<a href="#" target="_blank" id = "result_ItemUrl"></a>
             </p>
+          </div> %>
+
+        
+          <%# # Mouser_APIのレスポンス（Ruby） %>
+          <div class="item_image">
+            <img src="<%=@mouser_res_Image%>", id = "result_Image">
+          </div>
+          <div class="item_body">
+            <p id = "result_PartNumber">正式品番：<%= @mouser_res_PartNumber %></p>
+            <p id = "result_Manufacturer">メーカー：<%= @mouser_res_Manufacturer %></p>
+            <p id = "result_Stock">在庫数量：<%= @mouser_res_Stock %> 個</p>
+            <p id = "result_Price">　単価　： <%= @mouser_res_Price %> 〜</p>
+            <p>
+            　Link　：<a href="<%= @mouser_res_ItemUrl%>" target="_blank" id = "result_ItemUrl">ECサイト商品詳細ページへ</a>
+            </p>
           </div>
 
           <div class="item_stock_judge">
-            <div class="judge_exist, hidden", id="stock_exist">
+
+            <%# # JavaScript %>
+            <%# <div class="judge_exist, hidden", id="stock_exist">
               <p>在庫あり</p>
             </div>
             <div class="judge_none, hidden", id="stock_none">
               <p>在庫無し</p>
-            </div>
+            </div> %>
+
+            <%# Ruby %>
+            <% if @mouser_res_Stock.to_i >= 1 %>
+              <div class="judge_exist", id="stock_exist">
+                <p>在庫あり</p>
+              </div>
+            <% else @mouser_res_Stock.to_i  == 0 %>
+              <div class="judge_none", id="stock_none">
+                <p>在庫無し</p>
+              </div>
+            <% end %>
           </div>
             
         </div>

@@ -4,7 +4,6 @@
 
 /* item new,show(サインイン)--------------------------------------------- */
 .intro_content{
-  /* margin-bottom: 600px; */
 }
 
 .item{
@@ -22,6 +21,7 @@
 .search_content{
   /* padding-bottom: 600px; */
   /* background-color: #ffffff; */
+  text-align: center;
 }
 
 .item_form{
@@ -41,6 +41,13 @@
   width: 8vw;
   height: 45px;
   font-size: 20px;
+}
+
+.flash_msg{
+  background-color: #ea352d;
+  color: #ffffff;
+  font-size: 20px;
+  margin: auto;
 }
 
 
@@ -199,6 +206,7 @@
 
 #result_ItemUrl{
   text-decoration: none;
+  color: #7AA5D2;
 }
 
 .hidden{
@@ -252,8 +260,6 @@
 /* item new,show(サインアウト)--------------------------------------------- */
 
 .intro_content{
-  /* display: flex; */
-  padding-bottom: 500px;
   background-color: #E9EEF6;;
 }
 
@@ -435,7 +441,7 @@
 
 .user_register_btn{
   text-align: center;
-  margin-top: 100px;
+  margin: 150px 0px;
 }
 
 

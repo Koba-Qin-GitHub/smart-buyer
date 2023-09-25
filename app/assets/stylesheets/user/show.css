@@ -41,7 +41,7 @@
 /* お気に入り一覧ーーーーーーーーーーーーーーーーーーーーーーーーーーーー */
 
 .mypage_contents{
-  padding-bottom: 600px;
+  padding-bottom: 300px;
 }
 .mypage_content{
   text-align: center;
@@ -87,19 +87,10 @@ h1 {
 
 
 .favorite_no_date{
+  width: 65%;
   font-size: 30px;
-  margin: 30px;
+  margin: 30px auto;
   padding: 10px;
   border: 1px solid;
   border-radius: 10px;
-}
-
-
-
-
-
-
-.mypage_footer{
-  margin-top: 500px;
-  background-color: #7AA5D2;
 }

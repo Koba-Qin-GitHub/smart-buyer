@@ -39,8 +39,7 @@
 }
 
 .error-msg{
-  /* background-color: #0099e8; */
-  /* display: flex; */
+  color: #ea352d;
   justify-content: center;
   width: 50%;
   margin: 0 auto;

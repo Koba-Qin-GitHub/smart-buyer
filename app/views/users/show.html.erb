@@ -46,16 +46,14 @@
             <div class="reminder_register">
               <% if Reminder.where(favorite_id: favorite.id).blank? %>
                 <div class="reminder_icon">
-                  <%= image_tag("checkbox_grey.png", class:"reminder_icon_image") %>
+                  <%#= image_tag("checkbox_grey.png", class:"reminder_icon_image") %>
                 </div>
-                <%=link_to "リマインド 登録",  new_favorite_reminder_path(favorite.id), class:"reminder_new_btn  btn" %>
+                <%#=link_to "リマインド 登録",  new_favorite_reminder_path(favorite.id), class:"reminder_new_btn  btn" %>
               <% else %>
                 <div class="reminder_icon">
-                  <%= image_tag("checkbox_blue.png", class:"reminder_icon_image") %>
+                  <%#= image_tag("checkbox_blue.png", class:"reminder_icon_image") %>
                 </div>
-                  <%#=link_to "リマインド設定 削除", favorite_reminder_path(favorite.id), method: :delete %>
-                  <%#=link_to "リマインド設定", user_path(current_user), class:"reminder_set_btn btn" %> 
-                <%=link_to "リマインド 削除", favorite_reminder_path(favorite.id), method: :delete, class:"reminder_delete_btn btn" %>
+                <%#=link_to "リマインド 削除", favorite_reminder_path(favorite.id), method: :delete, class:"reminder_delete_btn btn" %>
               <% end %>
             </div>
 

@@ -3,6 +3,9 @@
 <% if user_signed_in? %>
 
   <div class="search_content">
+    <div class="flash_msg">
+      <%= notice %>
+    </div>
 
     <div class="item_form">
     <%# 検索フォーム ：検索ボタンのクリックで「item登録」の処理 が実行%>
@@ -12,6 +15,7 @@
         <%#=link_to 'もどる', root_path, class:"back-btn" %>
       <% end %>
     </div>
+    
       <%#= link_to "この商品をお気に入り登録する",  user_path(current_user.id) %>
 
     <%# <div id="favorite_new_bt", class="hidden" > %>

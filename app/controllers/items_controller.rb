@@ -1,94 +1,111 @@
 class ItemsController < ApplicationController
+
+
   def index
   end
   
 
   def new
     gon.mouser_apiKey = ENV['MOUSER_API_KEY']
-    
-
     @item = Item.new
 
     if user_signed_in?
       @favorites = Favorite.where(user_id: current_user.id)
     end
-    
-    # binding.pry
-    
-    
   end
   
+
   def create
-    # binding.pry
-    # favorite_blank_check = Favorite.where(user_id: current_user.id, item_id: Item.where(name: item_params[:name])).blank? 
-    # puts "OK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    # puts favorite_blank_check
-
-    # binding.pry
     item = Item.create(item_params)
-    # render json:{ item: item }
     redirect_to item_path(item.id)
-
-    
-    
-    # favorite_blank_check = Favorite.where(user_id: current_user.id, item_id: Item.where(name: item.name)).blank? 
-    # gon.favorite_blank_check = favorite_blank_check
-
-    
-    # binding.pry
-    
-    
-
-    # @items = Item.all
-    
-    
-    # @item = Item.new(item_params)
-    # if @item.save
-    #   render json:{ item: item }
-    #   # render :index, notice: '登録しました！'
-    #   # render :new
-    #   # redirect_to root_path, notice: '「' + @item.name + '」の検索結果'
-    #   redirect_to root_path(@item)
-    # else
-    #   # redirect_to root_path, notice: '登録に失敗しました。'
-    #   redirect_to root_path
-    # end 
   end
+
 
   def show
     set_item
-    
-    # set_favorite
+    mouser_search
+   
+    if @mouser_res_NumberOfResult  == 1 
+
+      # Mouser_APIレスポンスを各インスタンス変数へ代入
+      @mouser_res_PartNumber = @response_data["SearchResults"]["Parts"][0]["ManufacturerPartNumber"]
+      @mouser_res_Stock = @response_data["SearchResults"]["Parts"][0]["AvailabilityInStock"]
+      @mouser_res_Image = @response_data["SearchResults"]["Parts"][0]["ImagePath"]
+      @mouser_res_Manufacturer = @response_data["SearchResults"]["Parts"][0]["Manufacturer"]
+      @mouser_res_Price = @response_data["SearchResults"]["Parts"][0]["PriceBreaks"][0]["Price"]
+      @mouser_res_ItemUrl = @response_data["SearchResults"]["Parts"][0]["ProductDetailUrl"]
+
+    else 
+      flash[:notice] = @mouser_res_NumberOfResult.to_s + '件、ヒットしました。完全一致の「正式品番」を入力してください'
+      redirect_to root_path
+    end
+
+
     @favorites = Favorite.where(user_id: current_user.id)
-    
-    # binding.pry
 
     # JavaScriptへ情報を渡す
     gon.mouser_apiKey = ENV['MOUSER_API_KEY']
     gon.item = @item
-
-
+    
   end
 
+
+  
 
   private
 
   def item_params
     params.require(:item).permit(:name).merge(user_id: current_user.id)
-    # params.require(:item).permit(:name, :content, :price, :category_id, :status_id, :delivery_charge_id, :prefecture_id, :shipment_date_id, :image).merge(user_id: current_user.id) 
   end
+
 
   def set_item
     @item = Item.find(params[:id])
   end
 
+
   def set_favorite
     @favorite = Favorite.where(user_id: current_user.id, item_id: Item.where(name: @item.name))
   end
 
-  # def set_user
-  #   @user = User.find(params[:id])
-  # end
+
+  def mouser_search
+    search_word = @item.name
+
+    # Mouser_API処理
+    require 'net/http'
+    require 'json'
+    
+    # URL作成
+    uri = URI('https://api.mouser.com/api/v1/search/partnumber')
+    params = {
+      :apiKey => ENV['MOUSER_API_KEY'],
+    }
+    uri.query = URI.encode_www_form(params)
+
+    # HTTPSリクエストを構築
+    req = Net::HTTP::Post.new(uri)
+    req.content_type = 'application/json'
+    req['accept'] = 'application/json'
+
+    req.body = {
+      'SearchByPartRequest' => {
+        'mouserPartNumber' => search_word,
+        'partSearchOptions' => 'string'
+      }
+    }.to_json
+    
+    req_options = {
+      use_ssl: uri.scheme == 'https'
+    }
+
+    # HTTPSリクエストを送信
+    res = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      response = http.request(req)
+      @response_data = JSON.parse(response.body)
+      @mouser_res_NumberOfResult = @response_data["SearchResults"]["NumberOfResult"].to_i
+    end
+  end
 
 end
 

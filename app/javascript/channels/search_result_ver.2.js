@@ -11,7 +11,7 @@ window.onload = function(){
   // document.getElementById("favorite_new_btn").classList.add("hidden");
   // document.getElementById("favorite_delete_btn").classList.remove("hidden");
 
-  search();
+  // search();
   // favorite_new_btn();
   // favorite_check()
   
