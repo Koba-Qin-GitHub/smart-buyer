@@ -1,7 +1,20 @@
-footer{
-  /* position: absolute;
-  bottom: 300; */
-  /* padding: 30px 0; */
-  height: 300px;
+
+/* footer---------------------------------------------- */
+
+
+.footer_contents{
   background-color: #7AA5D2;
+  height: 200px;
+}
+
+
+
+/* second-footer----------------------------------------- */
+
+.second-footer-logo{
+  background-color: #7AA5D2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
 }
