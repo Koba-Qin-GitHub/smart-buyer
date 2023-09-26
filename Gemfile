@@ -72,4 +72,6 @@ gem 'rails-i18n'
 gem 'gon'
 gem 'dotenv-rails'
 
+# 定時実行処理できるGem
+gem 'whenever', require: false
 
