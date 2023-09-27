@@ -13,7 +13,8 @@
 ActiveRecord::Schema.define(version: 2023_09_26_063812) do
 
   create_table "favorite_item_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "item_quantity", null: false
+    t.integer "stock", null: false
+    t.float "price", null: false
     t.bigint "favorite_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
