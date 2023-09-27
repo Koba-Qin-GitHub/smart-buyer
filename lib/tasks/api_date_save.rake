@@ -3,9 +3,6 @@ namespace :api_date_save do
   task Mouser_API_date_save: :environment do
 
 
-
-    Item.create(name: "xg4z-0002", user_id: 4)
-
     @favorites = Favorite.all
     
     @favorites.each do |favorite|
@@ -45,8 +42,10 @@ namespace :api_date_save do
       end
 
       @mouser_res_Stock = @response_data["SearchResults"]["Parts"][0]["AvailabilityInStock"]
+      @mouser_res_Price = @response_data["SearchResults"]["Parts"][0]["PriceBreaks"][0]["Price"][1..-1]
 
-      FavoriteItemData.create(favorite_id: favorite.id, item_quantity: @mouser_res_Stock)
+      # 取得したデータを「favorite_item_dateテーブル」に保存
+      FavoriteItemData.create(favorite_id: favorite.id, stock: @mouser_res_Stock, price: @mouser_res_Price)
 
     end
   end
