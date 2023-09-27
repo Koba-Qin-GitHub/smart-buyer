@@ -58,6 +58,10 @@
             </div>
 
           </div>
+          <div class="mypage_favorite_chart">
+            <%= line_chart FavoriteItemData.where(favorite_id: favorite.id).pluck(:created_at, :stock), class:"stock_chart", width: "30%", height: "300px", curve: false, xmin: Date.today.days_ago(14), xmax: Date.today.days_since(1), xtitle: "Date", ytitle: "Stock", colors: ["#ea352d"]%>
+            <%= line_chart FavoriteItemData.where(favorite_id: favorite.id).pluck(:created_at, :price), class:"price_chart", width: "30%", height: "300px", curve: false, xmin: Date.today.days_ago(14), xmax: Date.today.days_since(1), xtitle: "Date", ytitle: "Unit Price", colors: ["#7AA5D2"]%>
+          </div>
         <% end %>
       </div>
     <% else %>

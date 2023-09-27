@@ -94,3 +94,18 @@ h1 {
   border: 1px solid;
   border-radius: 10px;
 }
+
+.mypage_favorite_chart{
+  margin: 0 auto;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.stock_chart{
+  margin: 0 100px;
+}
+
+.price_chart{
+  margin: 0 100px;
+}
