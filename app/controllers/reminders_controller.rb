@@ -1,27 +1,26 @@
 class RemindersController < ApplicationController
   
+
   def new
-    # binding.pry
     @reminder = Reminder.new
   end
 
+
   def create
-    # binding.pry
     
     @reminder = Reminder.new(reminder_params)
-
-    @reminder.save
-    ReminderWayMailer.report(@reminder).deliver_now
-
-    # binding.pry
-    redirect_to "/items/#{@reminder.favorite.item.id}/"
-    # redirect_to user_path(current_user.id)
     
+    if @reminder.save
+      ReminderWayMailer.report(@reminder).deliver_now
+      redirect_to "/items/#{@reminder.favorite.item.id}/"
+    else
+      render :new
+    end
 
   end
 
+
   def destroy
-    # binding.pry
 
     reminder = Reminder.find_by(favorite_id: params[:favorite_id])
     reminder.destroy
@@ -35,4 +34,5 @@ class RemindersController < ApplicationController
   def reminder_params
     params.require(:reminder).permit(:case_id, :reminder_way_id).merge(favorite_id: params[:favorite_id])
   end
+  
 end
