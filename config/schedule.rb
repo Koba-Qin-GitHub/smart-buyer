@@ -21,7 +21,7 @@ set :output, "#{Rails.root}/log/cron.log"
 
 
 
-# 1分毎に実行
-every 1.minutes do
+# 3時間毎に実行
+every 3.hours do
   rake "api_date_save:Mouser_API_date_save"
 end 
