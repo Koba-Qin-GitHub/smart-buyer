@@ -1,44 +1,37 @@
 class FavoritesController < ApplicationController
+
   def create
-    # binding.pry
+
     @favorite = Favorite.new(favorite_params)
-    
-    
-    favorite_check = Favorite.where(user_id: current_user.id, item_id: params[:item_id]).blank? 
     
     if favorite_check
       @favorite.save
+
+      # お気に入り保存時に、「最初のfavorite_item_data」を取得、保存する 
+      Rails.application.load_tasks
+      Rake::Task['api_date_save:Mouser_API_date_save'].execute
+      Rake::Task['api_date_save:Mouser_API_date_save'].clear
+      
       redirect_to request.referer
     else
       redirect_to request.referer
     end 
 
-    # favorite = current_user.favorites.build(item_id: params[:item_id])
-    # item_search_result = Item.where(name: favorite.item.name)
-
-    
-    # binding.pry
-    # if favorite_check    # ユーザーにとって初めて登録する「正式品番」の場合、保存する
-    #   favorite.save
-    # end
-
-
-  #   @favorite = Favorite.new(favorite_params)
-  #   if @favorite.save
-  #     # render :show
-  #     puts '登録しました！'
-  #   else
-  #     puts '登録に失敗しました。'
-  #   end 
   end
 
+  
   def destroy
 
-    # binding.pry
-    
-    # @favorites = Favorite.where(user_id: current_user.id)
-
     favorite = Favorite.find_by(item_id: params[:item_id], user_id: current_user.id)
+
+
+    if FavoriteItemData.find_by(favorite_id: favorite.id).blank?
+
+    else
+      favorite_item_data = FavoriteItemData.where(favorite_id: favorite.id)
+      favorite_item_data.delete_all
+    end
+
 
     if Reminder.find_by(favorite_id: favorite.id).blank?
       favorite.destroy
@@ -50,12 +43,6 @@ class FavoritesController < ApplicationController
       redirect_to request.referer
     end
 
-
-
-    # if favorite.present?      # favorite に 「値が存在するのか」を判定
-    #   favorite.destroy
-    # end
-
   end
 
 
@@ -64,6 +51,10 @@ class FavoritesController < ApplicationController
   def favorite_params
     # params.require(:favorite).permit(item_id: params[:item_id]).merge(user_id: current_user.id)
     params.permit(:item_id).merge(user_id: current_user.id)
+  end
+
+  def favorite_check 
+    Favorite.where(user_id: current_user.id, item_id: params[:item_id]).blank? 
   end
 
 end
