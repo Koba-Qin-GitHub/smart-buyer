@@ -17,6 +17,9 @@ module SmartBuyer
     # 「submitが連続で押せない」という設定を無効化
     config.action_view.automatically_disable_submit_tag = false
 
+    # 「日本時間」設定
+    config.time_zone = "Tokyo"
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

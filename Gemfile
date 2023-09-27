@@ -72,4 +72,10 @@ gem 'rails-i18n'
 gem 'gon'
 gem 'dotenv-rails'
 
+# 定時実行処理できるGem
+gem 'whenever', require: false
 
+# チャート作成できるGem
+gem 'chartkick'
+# チャートの表記を変更できるGem
+gem 'groupdate'

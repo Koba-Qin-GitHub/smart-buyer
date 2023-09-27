@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_11_090102) do
+ActiveRecord::Schema.define(version: 2023_09_26_063812) do
+
+  create_table "favorite_item_data", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "stock", null: false
+    t.float "price", null: false
+    t.bigint "favorite_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["favorite_id"], name: "index_favorite_item_data_on_favorite_id"
+  end
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -53,6 +62,7 @@ ActiveRecord::Schema.define(version: 2023_09_11_090102) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorite_item_data", "favorites"
   add_foreign_key "favorites", "items"
   add_foreign_key "favorites", "users"
   add_foreign_key "items", "users"
