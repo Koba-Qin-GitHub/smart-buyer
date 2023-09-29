@@ -5,3 +5,6 @@ ja:
         name: 名前
         birthday: 生年月日
         company_id: 会社のカテゴリー
+      reminder:
+        case_id: リマインド条件
+        reminder_way_id: リマインド方法

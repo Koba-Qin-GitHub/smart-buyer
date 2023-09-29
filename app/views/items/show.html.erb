@@ -51,15 +51,19 @@
             <% if favorite.item.name == @item.name %>
               <% if Reminder.where(favorite_id: favorite.id).blank? %>
                 <div class="reminder_icon">
-                  <%#= image_tag("checkbox_grey.png", class:"reminder_icon_image") %>
+                  <%= image_tag("checkbox_grey.png", class:"reminder_icon_image") %>
                 </div>
-                <%#=link_to "リマインド登録",  new_favorite_reminder_path(favorite.id), class:"reminder_new_btn  btn" %>
+                <%=link_to "リマインド登録",  new_favorite_reminder_path(favorite.id), class:"reminder_new_btn  btn" %>
               <% else %>
                 <div class="reminder_icon">
-                  <%#= image_tag("checkbox_blue.png", class:"reminder_icon_image") %>
+                  <%= image_tag("checkbox_blue.png", class:"reminder_icon_image") %>
                 </div>
                 <%#=link_to "リマインド設定 削除", favorite_reminder_path(favorite.id), method: :delete %>
-                <%#=link_to "リマインド設定", user_path(current_user), class:"reminder_set_btn btn" %> 
+                <%=link_to "リマインド設定", user_path(current_user), class:"reminder_set_btn btn" %> 
+                <div class="reminder_content">
+                  <div class="case">条件：<%= Reminder.find_by(favorite_id: favorite.id).case.name %></div>
+                  <div class="reminder_way">方法：<%= Reminder.find_by(favorite_id: favorite.id).reminder_way.name %></div>
+                </div>
               <% end %>
             <% end %>
           <% end %>
@@ -123,7 +127,10 @@
             <%# Ruby %>
             <% if @mouser_res_Stock.to_i >= 1 %>
               <div class="judge_exist", id="stock_exist">
-                <p>在庫あり</p>
+                <div>
+                  <p>在庫あり</p>
+                  <p>（<%= @mouser_res_Stock %> 個）</p>
+                </div>
               </div>
             <% else @mouser_res_Stock.to_i  == 0 %>
               <div class="judge_none", id="stock_none">
