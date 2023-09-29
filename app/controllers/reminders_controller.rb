@@ -11,7 +11,6 @@ class RemindersController < ApplicationController
     @reminder = Reminder.new(reminder_params)
     
     if @reminder.save
-      ReminderWayMailer.report(@reminder).deliver_now
       redirect_to "/items/#{@reminder.favorite.item.id}/"
     else
       render :new

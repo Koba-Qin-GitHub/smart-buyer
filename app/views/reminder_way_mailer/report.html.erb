@@ -1,8 +1,34 @@
-<h1>リマインダー登録内容</h1>
+<p>
+  <%= @user.name %> 様<br>
 
-<p>
-  リマインド条件<%= @reminder.case.name %>
+  <br>
+
+  正式品番「<%= @item.name %>」の在庫数量が下記の通り変化したため、通知致します。<br>
+
+  <br>
+
+  「<%= @old_stock %>個」 → 「<%= @new_stock %>個」<br>
+
+  <br>
+  <br>
+
+  現在のリマインドの設定内容は、下記の通りです。<br>
+  リマインド条件: <%= @reminder.case.name %><br>
+  リマインド方法: <%= @reminder.reminder_way.name %><br>
+
+  <br>
+  <br>
+
+  リマインドの設定内容を変更する場合は、「Smart-Buyer マイページ」より変更をお願いいたします。<br>
+  Smart-Burey URL : https://localhost:3001/users/sign_in <br>
+
+  <br>
+  <br>
+  <br>
+
+  ★本メールは、自動送信しております。<br>
+  送信専用のためご返信いただいてもお答えできませんので予めご了承ください。<br>
+  
 </p>
-<p>
-  リマインド方法<%= @reminder.reminder_way.name %>
-</p>
+
+

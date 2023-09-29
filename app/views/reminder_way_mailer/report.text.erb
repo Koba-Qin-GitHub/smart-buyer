@@ -1,5 +1,20 @@
-リマインダー登録内容
+<%= @user.name %> 様
+
+
+正式品番「<%= @item.name %>」の在庫数量が
+
+「<%= @old_stock %>個」 → 「<%= @new_stock %>個」
+
+へ変化したため、通知いたします。
+
+
+
+現在のリマインドの設定内容は、下記の通りです。
 
 リマインド条件<%= @reminder.case.name %>
-
 リマインド方法<%= @reminder.reminder_way.name %>
+
+リマインドの設定内容を変更する場合は、「Smart-Buyer マイページ」より変更をお願いいたします。
+Smart-Burey URL : https://localhost:3001/users/sign_in
+
+
