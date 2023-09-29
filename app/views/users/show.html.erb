@@ -22,48 +22,81 @@
     </div>
 
     <% if @favorites.exists? %>
-      <div class="mypage_favorites">
+      <div class="mypage_favorites", id="mypage_favorite">
 
         <% @favorites.each do |favorite| %>
           <div class="mypage_favorite">
 
-            <div class="mypage_favorite_info">
-              <div class="favorite_item_name">
-                正式品番「<%= favorite.item.name %>」
-              </div>
-              <div class="favorite_created">
-                (登録日：<%= favorite.created_at.strftime('%Y/%m/%d')%>)
-              </div>
-            </div>
-
-            <div class="favorite_register">
-              <div class="favorite_icon">
-                <%= image_tag("checkbox_orenge.png", class:"favorite_icon_image") %>
-              </div>
-              <%=link_to "お気に入り 解除", "/items/#{favorite.item.id}/favorites/#{favorite.id}/", class:"favorite_delete_btn btn", method: :delete, id: "favorite_delete"%>
-            </div>
-
-            <div class="reminder_register">
-              <% if Reminder.where(favorite_id: favorite.id).blank? %>
-                <div class="reminder_icon">
-                  <%#= image_tag("checkbox_grey.png", class:"reminder_icon_image") %>
+            <div class="mypage_favorite_left">
+              <div class="mypage_favorite_info">
+                <div class="favorite_item_name">
+                  正式品番「<%= favorite.item.name %>」
                 </div>
-                <%#=link_to "リマインド 登録",  new_favorite_reminder_path(favorite.id), class:"reminder_new_btn  btn" %>
+                <div class="favorite_created">
+                  <%# (登録日：<%= favorite.created_at.strftime('%Y/%m/%d')%>
+                </div>
+              </div>
+
+              <div class="favorite_register">
+                <div class="favorite_icon">
+                  <%= image_tag("checkbox_orenge.png", class:"favorite_icon_image") %>
+                </div>
+                <%=link_to "お気に入り 解除", "/items/#{favorite.item.id}/favorites/#{favorite.id}/", class:"favorite_delete_btn btn", method: :delete, id: "favorite_delete"%>
+              </div>
+
+              <div class="reminder_register">
+                <% if Reminder.where(favorite_id: favorite.id).blank? %>
+                  <div class="reminder_icon">
+                    <%= image_tag("checkbox_grey.png", class:"reminder_icon_image") %>
+                  </div>
+                  <%=link_to "リマインド 登録",  new_favorite_reminder_path(favorite.id), class:"reminder_new_btn  btn" %>
+                <% else %>
+                  <div class="reminder_icon">
+                    <%= image_tag("checkbox_blue.png", class:"reminder_icon_image") %>
+                  </div>
+                  <%=link_to "リマインド 削除", favorite_reminder_path(favorite.id), method: :delete, class:"reminder_delete_btn btn" %>
+                  <div class="reminder_content">
+                    <div class="case">条件：<%= Reminder.find_by(favorite_id: favorite.id).case.name %></div>
+                    <div class="reminder_way">方法：<%= Reminder.find_by(favorite_id: favorite.id).reminder_way.name %></div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div class="mypage_favorite_right">
+              <% if FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].stock >= 1 %>
+                <div class="judge_exist", id="stock_exist">
+                  <p>在庫あり</p>
+                  <p>（<%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].stock %> 個）</p>
+                </div>
+                <div class="judge_time">
+                  <%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].created_at.strftime('%m/%d %-H:%M') %> 時点
+                </div>
               <% else %>
-                <div class="reminder_icon">
-                  <%#= image_tag("checkbox_blue.png", class:"reminder_icon_image") %>
+                <div class="judge_none", id="stock_none"> 
+                  在庫無し
                 </div>
-                <%#=link_to "リマインド 削除", favorite_reminder_path(favorite.id), method: :delete, class:"reminder_delete_btn btn" %>
+                <div class="judge_time">
+                  <%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].created_at.strftime('%m/%d %-H:%M') %> 時点
+                </div>
               <% end %>
             </div>
 
           </div>
+
           <div class="mypage_favorite_chart">
-            <%= line_chart FavoriteItemData.where(favorite_id: favorite.id).pluck(:created_at, :stock), class:"stock_chart", width: "30%", height: "300px", curve: false, xmin: Date.today.days_ago(14), xmax: Date.today.days_since(1), xtitle: "Date", ytitle: "Stock", colors: ["#ea352d"]%>
-            <%= line_chart FavoriteItemData.where(favorite_id: favorite.id).pluck(:created_at, :price), class:"price_chart", width: "30%", height: "300px", curve: false, xmin: Date.today.days_ago(14), xmax: Date.today.days_since(1), xtitle: "Date", ytitle: "Unit Price", colors: ["#7AA5D2"]%>
+            <button class="chart_open_btn" id="chart_open_btn">チャート 表示</button>
+            <div class="hidden">
+              <div class="charts">
+                <%= line_chart FavoriteItemData.where(favorite_id: favorite.id).pluck(:created_at, :stock), class:"stock_chart", width: "30%", height: "300px", curve: false, xmin: Date.today.days_ago(14), xmax: Date.today.days_since(2), xtitle: "Date", ytitle: "Stock", colors: ["#ea352d"]%>
+                <%= line_chart FavoriteItemData.where(favorite_id: favorite.id).pluck(:created_at, :price), class:"price_chart", width: "30%", height: "300px", curve: false, xmin: Date.today.days_ago(14), xmax: Date.today.days_since(2), xtitle: "Date", ytitle: "Unit Price", colors: ["#7AA5D2"]%>
+              </div>
+            </div>
+            <button class="chart_close_btn hidden" id="chart_close_btn">チャート 非表示</button>
           </div>
+
         <% end %>
       </div>
+
     <% else %>
 
       <div class="favorite_no_date">
