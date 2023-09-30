@@ -11,6 +11,8 @@ class FavoritesController < ApplicationController
       Rails.application.load_tasks
       Rake::Task['api_date_save:Mouser_API_date_save'].execute
       Rake::Task['api_date_save:Mouser_API_date_save'].clear
+      Rake::Task['reminder:reminder_mail'].execute
+      Rake::Task['reminder:reminder_mail'].clear
       
       redirect_to request.referer
     else
