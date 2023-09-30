@@ -60,6 +60,24 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "smart_buyer_production"
 
+
+    # メール関連の設定
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.delivery_method = :test
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: 'smtp.gmail.com',
+      domain: 'gmail.com',
+      port: 587,
+      user_name: ENV['OWNER_MAIL_ADDRESS'],
+      password: ENV['OWNER_MAIL_APPLICATION_KEY'],
+      authentication: :login,
+      enable_starttls_auto: true,
+    }
+
+    
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
