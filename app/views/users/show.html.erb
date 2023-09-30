@@ -69,14 +69,14 @@
                   <p>（<%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].stock %> 個）</p>
                 </div>
                 <div class="judge_time">
-                  <%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].created_at.strftime('%m/%d %-H:%M') %> 時点
+                  <%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].created_at.strftime('%m/%d %-H:%M') %>
                 </div>
               <% else %>
                 <div class="judge_none", id="stock_none"> 
                   在庫無し
                 </div>
                 <div class="judge_time">
-                  <%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].created_at.strftime('%m/%d %-H:%M') %> 時点
+                  <%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].created_at.strftime('%m/%d %-H:%M') %>
                 </div>
               <% end %>
             </div>
