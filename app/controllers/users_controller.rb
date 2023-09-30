@@ -4,6 +4,14 @@ class UsersController < ApplicationController
     set_user
     @items = Item.where(user_id: current_user.id)
     @favorites = Favorite.where(user_id: current_user.id)
+
+    # マイページ遷移時に、最新の在庫状況を表示
+    Rails.application.load_tasks
+    Rake::Task['api_date_save:Mouser_API_date_save'].execute
+    Rake::Task['api_date_save:Mouser_API_date_save'].clear
+    Rake::Task['reminder:reminder_mail'].execute
+    Rake::Task['reminder:reminder_mail'].clear
+
   end
 
 
