@@ -9,9 +9,9 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 job_type :rake, "source /Users/y.takashi/.zshrc; export PATH=\"$HOME/.rbenv/bin:$PATH\"; eval \"$(rbenv init -)\"; cd :path && RAILS_ENV=:environment bundle exec rake :task :output"
 
 # 環境変数'RAILS_ENV'にセットされている変数またはdevelopmentを指定
+rails_env = ENV['RAILS_ENV'] || :development
 
 # cronを実行する環境変数をセット
-rails_env = ENV['RAILS_ENV'] || :development
 set :environment, rails_env
 # set :environment, :production
 
