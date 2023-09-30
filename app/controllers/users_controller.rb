@@ -7,8 +7,8 @@ class UsersController < ApplicationController
 
     # マイページ遷移時に、最新の在庫状況を表示
     Rails.application.load_tasks
-    # Rake::Task['api_date_save:Mouser_API_date_save'].execute
-    # Rake::Task['api_date_save:Mouser_API_date_save'].clear
+    Rake::Task['api_date_save:Mouser_API_date_save'].execute
+    Rake::Task['api_date_save:Mouser_API_date_save'].clear
     Rake::Task['reminder:reminder_mail'].execute
     Rake::Task['reminder:reminder_mail'].clear
 
