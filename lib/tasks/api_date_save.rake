@@ -6,6 +6,9 @@ namespace :api_date_save do
     @favorites = Favorite.all
     
     @favorites.each do |favorite|
+
+      sleep(0.1)
+
       search_word = favorite.item.name
 
       # Mouser_API処理

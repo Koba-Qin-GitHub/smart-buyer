@@ -7,6 +7,8 @@ namespace :reminder do
   
     @reminders.each do |reminder|
 
+      sleep(0.1)
+
       favorite_id = reminder.favorite.id
       # リマインド登録しているユーザーの情報を取得
       user = User.find(Favorite.find(favorite_id).user_id) 
