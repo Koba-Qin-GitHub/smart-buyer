@@ -22,6 +22,6 @@ set :output, "#{Rails.root}/log/cron.log"
 
 
 every 1.minutes do
-  rake "api_date_save:Mouser_API_date_save"
+  rake "api_data_save:Mouser_API_data_save"
   rake "reminder:reminder_mail"
 end 

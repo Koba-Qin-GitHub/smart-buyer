@@ -8,6 +8,6 @@ class ReminderWayMailer < ApplicationMailer
     @old_stock = old_stock
     delivery_options = {user_name: ENV['OWNER_MAIL_ADDRESS'], password: ENV['OWNER_MAIL_PASSWORD']}
     mail to: @user.email,
-        subject: "【Smart-Buyer】「#{@item.name}」在庫状況変化によるリマインド通知"
+        subject: "【Smart-Buyer】「#{@item.name}」在庫変化リマインド通知"
   end
 end

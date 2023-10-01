@@ -1,6 +1,6 @@
-namespace :api_date_save do
+namespace :api_data_save do
   desc "Mouser_API_データの定期取得"
-  task Mouser_API_date_save: :environment do
+  task Mouser_API_data_save: :environment do
 
 
     @favorites = Favorite.all
