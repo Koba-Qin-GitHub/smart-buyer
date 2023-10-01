@@ -5,15 +5,7 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(favorite_params)
     
     if favorite_check
-      @favorite.save
-
-      # お気に入り保存時に、「最初のfavorite_item_data」を取得、保存する 
-      Rails.application.load_tasks
-      Rake::Task['api_date_save:Mouser_API_date_save'].execute
-      Rake::Task['api_date_save:Mouser_API_date_save'].clear
-      Rake::Task['reminder:reminder_mail'].execute
-      Rake::Task['reminder:reminder_mail'].clear
-      
+      @favorite.save      
       redirect_to request.referer
     else
       redirect_to request.referer
