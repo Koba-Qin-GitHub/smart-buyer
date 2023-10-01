@@ -8,6 +8,6 @@ class Favorite < ApplicationRecord
   belongs_to :user
   belongs_to :item
   has_one    :reminder
-  has_one    :favorite_item_data
+  has_many   :favorite_item_data
   
 end
