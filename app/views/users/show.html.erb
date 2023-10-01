@@ -41,7 +41,7 @@
                 <div class="favorite_icon">
                   <%= image_tag("checkbox_orenge.png", class:"favorite_icon_image") %>
                 </div>
-                <%=link_to "お気に入り 解除", "/items/#{favorite.item.id}/favorites/#{favorite.id}/", class:"favorite_delete_btn btn", method: :delete, id: "favorite_delete"%>
+                <%=link_to "お気に入り 解除", "/items/#{favorite.item.id}/favorites/#{favorite.id}/", class:"favorite_delete_btn btn", method: :delete, id: "favorite_delete", data: {confirm: "お気に入りを解除すると、下記データが削除されます。 \n\n ・リマインドの設定内容 \n ・これまでに収集した「stock」「price」のデータ \n\n 本当によろしいですか？"}%>
               </div>
 
               <div class="reminder_register">
