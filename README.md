@@ -27,16 +27,23 @@ https://smart-buyer.onrender.com/
 <br>
 
 # 利用方法
-### 商品の検索
+### 検索機能
 1. トップページより、ユーザーの新規登録を行う
 2. 欲しい商品の正式品番を入力し、検索ボタンをクリックする
-3. 連携している各ECサイトにおける商品情報が一覧表示される
+3. 連携している各ECサイトの商品情報が一覧で表示される
 4. 購入する場合は、URLをクリックし、各ECサイトの商品ページへ遷移する
 
-### 商品のお気に入り登録
-1. 欲しい商品を検索し、まだお気に入り登録していない場合、「お気に入り登録」ボタンが出力される
-2. 「お気に入り登録」ボタンをクリックし、お気に入り登録する
-3. マイページへ行くと、お気に入りにした商品が一覧表示されている
+### お気に入り機能
+1. 商品の検索後、まだお気に入り登録していない場合、「お気に入り登録」ボタンが出力される
+2. 「お気に入り登録」ボタンをクリックし、お気に入り登録する。お気に入り登録した商品は、3時間毎に各ECサイトの在庫、価格データを収集する
+3. マイページへ行くと、お気に入りにした商品の最新の在庫状況が一覧で表示されている
+4. 必要に応じて「チャート 表示」ボタンをクリックすることで、3時間毎に収集した在庫と価格のチャート図を表示することができる
+
+### リマインド機能
+1. お気に入り登録した商品には、「リマインド登録」ボタンが出力される
+2. 「リマインド登録」ボタンをクリックすると、リマインド情報入力画面へ遷移する
+3. リマインド情報入力画面で、リマインド条件とリマインド方法をプルダウンより選択し、登録ボタンをクリックする
+4. 3時間毎に収集される在庫、価格データに基づいて、設定したリマインド条件を満たしたとき、設定したリマインド方法でリマインド通知が実行される
 
 <br>
 <br>
@@ -58,7 +65,7 @@ https://docs.google.com/spreadsheets/d/1MKqWAkcFBolx6_V2gCy3e22MvRm1kQ-FrRIy0AiD
 
 | Topページ | 検索ページ |
 | :--------: | :--------: |
-| [![Image from Gyazo](https://i.gyazo.com/6793ed95bd3f1a8aba71596f69e1cc5e.png)](https://gyazo.com/6793ed95bd3f1a8aba71596f69e1cc5e) | [![Image from Gyazo](https://i.gyazo.com/890db82eae6cab1bda676256e824909f.png)](https://gyazo.com/890db82eae6cab1bda676256e824909f) |
+| [![Image from Gyazo](https://i.gyazo.com/6a1ffcdfe49438cfd3deb5bff77f907c.png)](https://gyazo.com/6a1ffcdfe49438cfd3deb5bff77f907c) | [![Image from Gyazo](https://i.gyazo.com/80a762e67cc8a585b33014ca09bf03b3.png)](https://gyazo.com/80a762e67cc8a585b33014ca09bf03b3) |
 | サービスの特徴が伝わりやすいように、わかりやすい言葉や画像を選択しました。さらに、連携しているECサイトを載せる事でユーザーにとって使い勝手が良くなるように工夫しました。 | 「どういったユーザーがどういう部品を検索したのか」などのデータを収集するために検索機能の使用にはユーザー新規登録を必須としました。さらに、検索バーの直下に連携ECサイトを載せる事で、「どのECサイトの検索結果が表示されるのか」をわかるようにしました。 |
 
 
@@ -76,14 +83,25 @@ https://docs.google.com/spreadsheets/d/1MKqWAkcFBolx6_V2gCy3e22MvRm1kQ-FrRIy0AiD
 
 | 検索結果ページ（お気に入り登録 前） | 検索結果ページ（お気に入り登録 後） |
 | :---: | :---: |
-| [![Image from Gyazo](https://i.gyazo.com/85a858e5705fec91e4995fb86e371b06.png)](https://gyazo.com/85a858e5705fec91e4995fb86e371b06) | [![Image from Gyazo](https://i.gyazo.com/14ee63304a340cfc88959b556f12930f.png)](https://gyazo.com/14ee63304a340cfc88959b556f12930f) |
-| 連携しているECサイトの検索結果として、商品画像や在庫数量だけでなく、ECサイトへ遷移するLinkも表示することで、ユーザーがすぐに商品を購入できるようにしました。さらに、在庫の有無が一目でわかるように在庫の表示を作成しました。 | お気に入り登録することで、白黒のチェックボックスがオレンジに変化する事で、お気に入りにしている状態が分かりやすいようにしました。 |
+| [![Image from Gyazo](https://i.gyazo.com/1ec86911ce3517fdc83b0981f978beb2.png)](https://gyazo.com/1ec86911ce3517fdc83b0981f978beb2) | [![Image from Gyazo](https://i.gyazo.com/b407febf3347b8a2d14eb604ef187fe4.png)](https://gyazo.com/b407febf3347b8a2d14eb604ef187fe4) |
+| 連携しているECサイトの検索結果として、商品画像や在庫数量だけでなく、ECサイトへ遷移するLinkも表示することで、ユーザーがすぐに商品を購入できるようにしました。さらに、在庫の有無が一目でわかるように在庫の表示を作成しました。 | お気に入り登録することで、白黒のチェックボックスがオレンジに変化し、お気に入りにしている状態が分かりやすいように工夫しました。 |
 
 
-| マイページ、お気に入り登録一覧表示ページ | ユーザー情報編集ページ |
+| リマインド登録画面 | 検索結果ページ（リマインド登録 後） |
 | :---: | :---: |
-| [![Image from Gyazo](https://i.gyazo.com/da52ea6eac99c671c90a91457010682e.png)](https://gyazo.com/da52ea6eac99c671c90a91457010682e) | [![Image from Gyazo](https://i.gyazo.com/fc82ffa5edb0503abfde9227fea2ff23.png)](https://gyazo.com/fc82ffa5edb0503abfde9227fea2ff23) |
-| ユーザー情報の編集とお気に入り登録の一覧のみというシンプルな構成にしました。お気に入りは、登録日を表記する事で、ユーザーがいつ登録したのかがわかるようにしました。 | ユーザーが登録した情報を編集できるようにしました。 |
+| [![Image from Gyazo](https://i.gyazo.com/8006cbc31712af1bb33cccae588b74d1.png)](https://gyazo.com/8006cbc31712af1bb33cccae588b74d1) | [![Image from Gyazo](https://i.gyazo.com/3dd901a74edd289f9b7a00b1ae126eb9.png)](https://gyazo.com/3dd901a74edd289f9b7a00b1ae126eb9) |
+| お気に入り登録した商品に限り、リマインドを設定することが可能になり、リマインド条件とリマインド方法をプルダウンより選択できるようにしました。 | リマインドを設定していると、白黒のチェックボックスがブルーに変化し、設定したリマインド条件とリマインド方法の内容が表示されます。リマインドの内容が表示されることで、ユーザーにとってリマインド設定の状況がわかりやすくなるように工夫しました。 |
+
+
+| マイページ（チャート表示 前） | マイページ（チャート表示 後） |
+| :---: | :---: |
+| [![Image from Gyazo](https://i.gyazo.com/890f8099c26620f5bc250d7ec9e0e786.png)](https://gyazo.com/890f8099c26620f5bc250d7ec9e0e786) | [![Image from Gyazo](https://i.gyazo.com/4848b8ec4de6016e48af5429448f9230.png)](https://gyazo.com/4848b8ec4de6016e48af5429448f9230) |
+| マイページへ移動すると、お気に入りした商品の最新の在庫状況が一覧で表示されるようにし、いつ取得したデータなのかを明確にするために、在庫表示下部にデータを取得した時刻を表示するようにしました。 | 各お気に入り商品の下部にあるチャート表示ボタンをクリックすることで、3時間毎に収集した在庫、価格データのチャート図を表示できるようにしました。 |
+
+| お気に入り削除機能 | ユーザー情報編集機能 |
+| :---: | :---: |
+| [![Image from Gyazo](https://i.gyazo.com/e0eec3093b77882b853ca9011c55509b.png)](https://gyazo.com/e0eec3093b77882b853ca9011c55509b) | [![Image from Gyazo](https://i.gyazo.com/fc82ffa5edb0503abfde9227fea2ff23.png)](https://gyazo.com/fc82ffa5edb0503abfde9227fea2ff23) |
+| 収集した在庫、価格データの誤削除を防止するために、お気に入り解除ボタンをクリックすると、確認ダイアログが表示されるようにしました。 | マイページ内のユーザー情報編集ボタンをクリックすると、ユーザー情報編集ページへ遷移し、登録情報を編集できるようにしました。 |
 
 
 <br>
@@ -97,31 +115,32 @@ https://docs.google.com/spreadsheets/d/1MKqWAkcFBolx6_V2gCy3e22MvRm1kQ-FrRIy0AiD
  <br>
 
 #### お気に入り機能
- - お気に入り登録した商品の各ECサイトの在庫数量の定期的な自動取得と保存の実装
- - 取得した在庫数量の表またはグラフ化の実装
+ - お気に入り登録、削除の非同期処理
+ - グラフ横軸(日数)の範囲を選択できる機能（1週間、1ヶ月 など）の実装
 
  <br>
  
 #### リマインド機能
- - リマインド条件の実装（在庫数量が前回取得したものより増えた場合 など）
- - リマインド方法の実装（メール送信、LINE通知 ）
+ - リマインド登録、削除の非同期処理
+ - リマインド方法の実装（LINE通知）
 
  <br>
  
 #### その他
  - ユーザー パスワード再発行機能の実装
+ - レスポンシブ対応
 
 <br>
 <br>
 
 # データベース設計
-[![Image from Gyazo](https://i.gyazo.com/fd65f543effd4f4e341e5c77194e3afd.png)](https://gyazo.com/fd65f543effd4f4e341e5c77194e3afd)
+[![Image from Gyazo](https://i.gyazo.com/f3820a1a0eed0c60900ee1de76ad251b.png)](https://gyazo.com/f3820a1a0eed0c60900ee1de76ad251b)
 
 <br>
 <br>
 
 # 画面遷移図
-[![Image from Gyazo](https://i.gyazo.com/8a88dbd5a5760f3db47e91be171322c7.png)](https://gyazo.com/8a88dbd5a5760f3db47e91be171322c7)
+[![Image from Gyazo](https://i.gyazo.com/ec15d9c85af233f20fb5e97f2e6f0384.png)](https://gyazo.com/ec15d9c85af233f20fb5e97f2e6f0384)
 
 <br>
 <br>
@@ -158,8 +177,9 @@ https://docs.google.com/spreadsheets/d/1MKqWAkcFBolx6_V2gCy3e22MvRm1kQ-FrRIy0AiD
 #### 1. 競合を意識したアプリ開発
 Smart-Buyerを今後、「様々な人たちに便利に使ってもらうため」にも、価格比較サイトとして有名な「価格.com」を競合相手と想定してアプリ開発を行いました。
 競合相手を設けたことで、下記のようなアプリ開発をすることができました。
-1. プログラミングだけでなく、ビジネスを意識したアプリ開発
-2. 競合の強み、弱みを分析したからこそ、Smart-Buyerの強み（UI、機能など）を意識したアプリ開発
+1. 市場で同一のアプリは存在せず、実際にユーザーに使ってもらえるアプリ開発
+2. プログラミングだけでなく、「どういった機能の実装でアクセスが伸びるか」などのビジネスを意識したアプリ開発
+3. 競合の強み、弱みを分析したからこそ、Smart-Buyerの強み（UI、機能など）を意識したアプリ開発
 
 <br>
 
