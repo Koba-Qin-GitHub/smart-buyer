@@ -16,7 +16,8 @@
 
 
       <div class="search_word">
-        「正式品番：<%= @item.name%>」
+        <p class="item_title">正式品番</p>
+        <p class="item_name" ><%= @item.name %></p>
       </div>
 
 
@@ -100,13 +101,13 @@
             <% if @mouser_res_Stock.to_i >= 1 %>
               <div class="judge_exist", id="stock_exist">
                 <div>
-                  <p>在庫あり</p>
-                  <p>（<%= @mouser_res_Stock %> 個）</p>
+                  <p class="judge_title">在庫あり</p>
+                  <p class="judge_stock">（<%= @mouser_res_Stock %> 個）</p>
                 </div>
               </div>
             <% else @mouser_res_Stock.to_i  == 0 %>
               <div class="judge_none", id="stock_none">
-                <p>在庫無し</p>
+                <p class="judge_title">在庫無し</p>
               </div>
             <% end %>
 

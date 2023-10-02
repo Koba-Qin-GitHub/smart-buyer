@@ -29,8 +29,9 @@
 
             <div class="mypage_favorite_left">
               <div class="mypage_favorite_info">
-                <div class="favorite_item_name">
-                  正式品番「<%= favorite.item.name %>」
+                <div class="favorite_item">
+                  <p class="item_title">正式品番</p>
+                  <p class="item_name" ><%= favorite.item.name %></p>
                 </div>
                 <div class="favorite_created">
                   <%# (登録日：<%= favorite.created_at.strftime('%Y/%m/%d')%>
@@ -65,15 +66,15 @@
             <div class="mypage_favorite_right">
               <% if FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].stock >= 1 %>
                 <div class="judge_exist", id="stock_exist">
-                  <p>在庫あり</p>
-                  <p>（<%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].stock %> 個）</p>
+                  <p class="favorite_judge_title">在庫あり</p>
+                  <p class="favorite_judge_stock">（<%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].stock %> 個）</p>
                 </div>
                 <div class="judge_time">
                   <%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].created_at.strftime('%m/%d %-H:%M') %>
                 </div>
               <% else %>
                 <div class="judge_none", id="stock_none"> 
-                  在庫無し
+                  <p class="favorite_judge_title">在庫無し</p>
                 </div>
                 <div class="judge_time">
                   <%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].created_at.strftime('%m/%d %-H:%M') %>

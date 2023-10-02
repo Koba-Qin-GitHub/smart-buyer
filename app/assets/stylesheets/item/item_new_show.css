@@ -53,13 +53,16 @@
 .search_result{
   display: flex;
   align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .search_word{
+  width: 20%;
   font-size: 30px;
-  margin-left: 30px;
-  margin-right: 10px;
-  padding: 30px 0px;
+  margin: 0 60px;
+  position: relative;
+  text-align: center;
 }
 
 
@@ -87,13 +90,13 @@
 .favorite_register{
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 .reminder_register{
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
 }
 
 
@@ -166,7 +169,7 @@
 
 .item_image{
   width: 15%;
-  margin: 20px 10px;
+  margin: 20px 30px;
   text-align: center;
 }
 
@@ -200,7 +203,6 @@
   width: 15%;
   display: flex;
   align-items: center;
-  font-size: 30px;
 }
 
 .judge_exist{
@@ -212,9 +214,8 @@
   text-align: center;
   margin: auto;
   border-radius: 20px;
-  color: #ffffff;
-  
   background-color: #A8D93D;
+  color: #ffffff;
 }
 
 .judge_none{
@@ -225,9 +226,16 @@
   align-items: center;
   margin: 0 auto;
   border-radius: 20px;
-  color: #ffffff;
-
   background-color: #ea352d;
+  color: #ffffff;
+}
+
+.judge_title{
+  font-size: 1.8vw;
+}
+
+.judge_stock{
+  font-size: 1.3vw;
 }
 
 

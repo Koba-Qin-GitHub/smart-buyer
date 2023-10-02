@@ -47,12 +47,8 @@
   text-align: center;
 }
 
-.mypage_favorits_title{
-}
-
 h1 {
   font-size: 50px;
-  
 }
 
 .mypage_favorite{
@@ -60,13 +56,11 @@ h1 {
   height: 100px;
   margin: 0px auto;
   margin-top: 50px;
-  /* padding: 10px 10px; */
   border: 1px solid;
   border-radius: 10px;
   background-color: #ffffff;
   display: flex;
   align-items: center;
-  font-size: 32px;
 }
 
 .mypage_favorite_left{
@@ -77,15 +71,21 @@ h1 {
 
 .mypage_favorite_right{
   margin: 5px 0;
-  
   font-size: 20px;
   width: 10%;
   height: 80%;
-  
 }
+
 .mypage_favorite_right > .judge_exist{
   display: block;
-  
+}
+
+.favorite_judge_title{
+  font-size: 1.2vw;
+}
+
+.favorite_judge_stock{
+  font-size: 0.95vw;
 }
 
 .judge_time{
@@ -94,11 +94,32 @@ h1 {
 }
 
 .mypage_favorite_info{
-  width: 28%;
+  width: 35%;
   display: flex;
   align-items: center;
-  margin: 0 35px;
+  justify-content: center;
+  margin: 0 10px;
 }
+
+.favorite_item{
+  width: 100%;
+  position: relative;
+  margin: auto 0;
+}
+
+.item_title{
+  position: absolute;
+  top: -15px;
+  font-size: 1vw;
+}
+
+.item_name{
+  width: 100%;
+  font-size: 1.8vw;
+  margin-top: 10px;
+}
+
+
 
 
 
