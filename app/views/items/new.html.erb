@@ -8,23 +8,13 @@
     </div>
 
     <div class="item_form">
-    <%# 検索フォーム ：検索ボタンのクリックで「item登録」の処理 が実行%>
+      <%# 検索フォーム ：検索ボタンのクリックで「item登録」の処理 が実行%>
       <%= form_with model: @item, id: "search_form", local: true do |f| %>
         <%= f.search_field :name, id:"search_word", placeholder: "「正式品番」を入力してください（完全一致検索）" %>
         <%= f.submit "検索", id:"submit" %>
         <%#=link_to 'もどる', root_path, class:"back-btn" %>
       <% end %>
     </div>
-    
-      <%#= link_to "この商品をお気に入り登録する",  user_path(current_user.id) %>
-
-    <%# <div id="favorite_new_bt", class="hidden" > %>
-      <%#=link_to "お気に入り登録する", root_path, method: :post, id: "favorite_new"%>
-    <%# </div> %>
-    <%# <div id="favorite_delete_btn", class="hidden" > %>
-      <%#=link_to "お気に入りを解除する", root_path, method: :delete, id: "favorite_delete"%>
-    <%# </div> %>
-
   </div>
 
 

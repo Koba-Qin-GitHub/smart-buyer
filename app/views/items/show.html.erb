@@ -12,14 +12,12 @@
       </div>
     </div>
 
-
-      <%#= link_to "この商品をお気に入り登録する",  user_path(current_user.id) %>
-        
     <div class="search_result">
+
+
       <div class="search_word">
         「正式品番：<%= @item.name%>」
       </div>
-
 
 
       <div class="favorite_register">
@@ -82,25 +80,8 @@
         </div>
 
         <div class="item_content">
-
-          <%# # Mouser_APIのレスポンス(JavaScript) %>
-
-          <%# <div class="item_image">
-            <img src="" id = "result_Image">
-          </div>
-
-          <div class="item_body">
-            <p id = "result_PartNumber">正式品番：</p>
-            <p id = "result_Manufacturer">メーカー：</p>
-            <p id = "result_Stock">在庫数量：</p>
-            <p id = "result_Price">　単価　：</p>
-            <p>
-            　Link　：<a href="#" target="_blank" id = "result_ItemUrl"></a>
-            </p>
-          </div> %>
-
         
-          <%# # Mouser_APIのレスポンス（Ruby） %>
+          <%# # Mouser_APIのレスポンス %>
           <div class="item_image">
             <img src="<%=@mouser_res_Image%>", id = "result_Image">
           </div>
@@ -116,15 +97,6 @@
 
           <div class="item_stock_judge">
 
-            <%# # JavaScript %>
-            <%# <div class="judge_exist, hidden", id="stock_exist">
-              <p>在庫あり</p>
-            </div>
-            <div class="judge_none, hidden", id="stock_none">
-              <p>在庫無し</p>
-            </div> %>
-
-            <%# Ruby %>
             <% if @mouser_res_Stock.to_i >= 1 %>
               <div class="judge_exist", id="stock_exist">
                 <div>
@@ -137,6 +109,7 @@
                 <p>在庫無し</p>
               </div>
             <% end %>
+
           </div>
             
         </div>
