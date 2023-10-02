@@ -19,8 +19,6 @@
 }
 
 .search_content{
-  /* padding-bottom: 600px; */
-  /* background-color: #ffffff; */
   text-align: center;
 }
 
@@ -55,8 +53,6 @@
 .search_result{
   display: flex;
   align-items: center;
-  
-  /* background-color: #7AA5D2; */
 }
 
 .search_word{
@@ -64,8 +60,6 @@
   margin-left: 30px;
   margin-right: 10px;
   padding: 30px 0px;
-
-  /* background-color: palegreen; */
 }
 
 
@@ -94,16 +88,12 @@
   display: flex;
   align-items: center;
   margin-bottom: 5px;
-  
-  /* background-color: palevioletred; */
 }
 
 .reminder_register{
   display: flex;
   align-items: center;
   margin-bottom: 5px;
-
-  /* background-color: peru; */
 }
 
 
@@ -117,8 +107,6 @@
   color: #eeeeee;
   border-radius: 5px;
   text-decoration: none;
-
-  /* background-color: #A8D93D; */
 }
 
 .favorite_new_btn{
@@ -127,8 +115,7 @@
 
 .favorite_delete_btn{
   background-color: #F8A503;
-  /* background-color: #bc6900;
-  opacity: 0.5; */
+  /* opacity: 0.5; */
 }
 
 .favorite_set_btn{
@@ -143,8 +130,7 @@
 
 .reminder_delete_btn{
   background-color: #7AA5D2;
-  /* background-color: #4b76a3;
-  opacity: 0.5; */
+  /* opacity: 0.5; */
 }
 
 
@@ -161,12 +147,6 @@
   padding: 3px 5px ;
 }
 
-.reminder_content > div{
-  /* background-color: #D8F5FF;; */
-  /* margin: 3px 0; */
-  /* padding: 0px 5px; */
-}
-
 
 
 
@@ -175,29 +155,19 @@
 
 
 .company_name{
-  /* width: 50%; */
   height: 30%;
-  /* font-size: 50px; */
   margin: 0px auto;
-  
-  /* text-align: center; */
-  
 }
 
 .item_content{
   height: 70%;
   display: flex;
-  /* background-color: #F8A503; */
 }
 
 .item_image{
   width: 15%;
   margin: 20px 10px;
-  /* background-color: palegoldenrod; */
   text-align: center;
-  
-  /* width: 150px; */
-  /* height: 100px;  */
 }
 
 #result_Image{
@@ -209,7 +179,6 @@
 .item_body{
   width: 70%;
   font-size: 22px;
-  /* background-color: palegreen; */
   
 }
 
@@ -232,7 +201,6 @@
   display: flex;
   align-items: center;
   font-size: 30px;
-  /* background-color: paleturquoise; */
 }
 
 .judge_exist{
@@ -318,7 +286,6 @@
 
 .number{
   padding: 0px 18px;
-  /* margin: 0px 20px; */
   color: #ffffff;
   background-color: #11376B;
 }
@@ -331,20 +298,15 @@
 
 .explain_content{
   display: flex;
-  /* text-align: center; */
   height: 300px;
-  /* box-shadow: 10px 10px 15px -15px; */
-  
 }
 
 .explain_list_word{
   width: 50%;
-  /* height: 250px; */
   font-size: 30px;
   display: flex;
   text-align: center;
   background-color: #ffffff;
-  /* color: #eeeeee; */
 }
 
 .explain_list_word > p{
@@ -354,7 +316,6 @@
 
 .explain_list_image{
   width: 50%;
-  /* height: 300px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -374,7 +335,6 @@
 
 .image1{
   height: 60%;
-  /* width: 50%; */
   margin: 0 10px;
 }
 
@@ -431,8 +391,6 @@
 }
 
 .site_logo{
-  /* background-color: #eeeeee; */
-  /* border: 1px solid #11376B; */
   width: 300px;
   padding: 20px;
   border-radius: 10px;
@@ -445,13 +403,11 @@
   display: flex;
   justify-content: center;
   font-size: 40px;
-  /* margin-bottom: 200px; */
 }
 
 .user_register{
   padding: 50px;
   border-radius: 10px;
-  /* background-color: #7AA5D2; */
 }
 
 .user_register_btn{

@@ -55,10 +55,6 @@ h1 {
   
 }
 
-.mypage_favorites{
-  /* margin: 0 auto; */
-}
-
 .mypage_favorite{
   width: 80%;
   height: 100px;
@@ -80,10 +76,6 @@ h1 {
 }
 
 .mypage_favorite_right{
-  /* display: block; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* vertical-align: middle; */
   margin: 5px 0;
   
   font-size: 20px;
@@ -101,13 +93,6 @@ h1 {
   margin-top: 4px;
 }
 
-/* .item_stock_judge{
-  width: 15%;
-  display: flex;
-  align-items: center;
-  background-color: paleturquoise;
-} */
-
 .mypage_favorite_info{
   width: 28%;
   display: flex;
@@ -115,9 +100,7 @@ h1 {
   margin: 0 35px;
 }
 
-/* .favorite_created{
-  font-size: 20px;
-} */
+
 
 
 

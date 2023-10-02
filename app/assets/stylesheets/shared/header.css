@@ -8,15 +8,6 @@ header{
   /* border-radius: 20px; */
 }
 
-
-.header-left{
-  /* width: 100px; */
-  /* display: flex; */
-  /* border: 1px solid; */
-  /* margin: 10px; */
-
-}
-
 .header-logo{
   display: flex;
 }
@@ -57,9 +48,6 @@ header{
 
 
 /* second-header----------------------------------------------------- */
-
-.second-header{
-}
 
 .second-header-logo{
   background-color: #7AA5D2;
