@@ -1,17 +1,16 @@
 class ItemsController < ApplicationController
 
+  before_action :authenticate_user!, except:[:new]
+  before_action :set_item, only:[:show]
+  before_action :check_user, only:[:show]
 
+  
   def index
   end
   
 
   def new
-    gon.mouser_apiKey = ENV['MOUSER_API_KEY']
     @item = Item.new
-
-    if user_signed_in?
-      @favorites = Favorite.where(user_id: current_user.id)
-    end
   end
   
 
@@ -22,7 +21,7 @@ class ItemsController < ApplicationController
 
 
   def show
-    set_item
+    
     mouser_search
    
     if @mouser_res_NumberOfResult  == 1 
@@ -43,9 +42,6 @@ class ItemsController < ApplicationController
 
     @favorites = Favorite.where(user_id: current_user.id)
 
-    # JavaScriptへ情報を渡す
-    gon.mouser_apiKey = ENV['MOUSER_API_KEY']
-    gon.item = @item
     
   end
 
@@ -66,6 +62,17 @@ class ItemsController < ApplicationController
 
   def set_favorite
     @favorite = Favorite.where(user_id: current_user.id, item_id: Item.where(name: @item.name))
+  end
+
+
+  def check_user
+    @user = User.find(Item.find(params[:id]).user.id)
+
+    # 遷移前後のユーザーが「同一」かどうかチェック
+    unless @user.id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
+
   end
 
 

@@ -1,5 +1,9 @@
 class FavoritesController < ApplicationController
 
+  before_action :authenticate_user!
+  before_action :check_user, only:[:create, :destroy]
+
+
   def create
 
     @favorite = Favorite.new(favorite_params)
@@ -43,12 +47,21 @@ class FavoritesController < ApplicationController
   private
 
   def favorite_params
-    # params.require(:favorite).permit(item_id: params[:item_id]).merge(user_id: current_user.id)
     params.permit(:item_id).merge(user_id: current_user.id)
   end
 
   def favorite_check 
     Favorite.where(user_id: current_user.id, item_id: params[:item_id]).blank? 
+  end
+
+  def check_user
+    @user = User.find(Item.find(params[:item_id]).user.id)
+
+    # 遷移前後のユーザーが「同一」かどうかチェック
+    unless @user.id == current_user.id
+      redirect_to user_path(current_user.id)
+    end
+
   end
 
 end

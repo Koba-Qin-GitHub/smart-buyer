@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 
+  before_action :authenticate_user!
+  before_action :check_user, only:[:show, :edit, :update]
+
+  
   def show
-    set_user
     @items = Item.where(user_id: current_user.id)
     @favorites = Favorite.where(user_id: current_user.id)
 
@@ -19,7 +22,7 @@ class UsersController < ApplicationController
   def update
 
     if current_user.update(user_params)
-      redirect_to root_path
+      redirect_to user_path(current_user.id)
     else
       render :edit
     end
@@ -29,8 +32,14 @@ class UsersController < ApplicationController
 
   private
 
-    def set_user
+    def check_user
       @user = User.find(params[:id])
+
+      # 遷移前後のユーザーが「同一」かどうかチェック
+      unless @user.id == current_user.id
+        redirect_to user_path(current_user.id)
+      end
+
     end
 
 
