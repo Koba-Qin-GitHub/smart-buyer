@@ -68,35 +68,42 @@ https://docs.google.com/spreadsheets/d/1MKqWAkcFBolx6_V2gCy3e22MvRm1kQ-FrRIy0AiD
 | [![Image from Gyazo](https://i.gyazo.com/6a1ffcdfe49438cfd3deb5bff77f907c.png)](https://gyazo.com/6a1ffcdfe49438cfd3deb5bff77f907c) | [![Image from Gyazo](https://i.gyazo.com/80a762e67cc8a585b33014ca09bf03b3.png)](https://gyazo.com/80a762e67cc8a585b33014ca09bf03b3) |
 | サービスの特徴が伝わりやすいように、わかりやすい言葉や画像を選択しました。さらに、連携しているECサイトを載せる事でユーザーにとって使い勝手が良くなるように工夫しました。 | 「どういったユーザーがどういう部品を検索したのか」などのデータを収集するために検索機能の使用にはユーザー新規登録を必須としました。さらに、検索バーの直下に連携ECサイトを載せる事で、「どのECサイトの検索結果が表示されるのか」をわかるようにしました。 |
 
+<br>
 
 | ユーザー登録ページ | ユーザー登録ページ（エラーメッセージ 有り） |
 | :---: | :---: |
 | [![Image from Gyazo](https://i.gyazo.com/fc812cc3437c5bdb5dd553031aac11b2.png)](https://gyazo.com/fc812cc3437c5bdb5dd553031aac11b2) | [![Image from Gyazo](https://i.gyazo.com/d937eb3f4dfeb55aeb3c499cb43f9ba6.png)](https://gyazo.com/d937eb3f4dfeb55aeb3c499cb43f9ba6) |
 | 「生年月日」や「会社のカテゴリー」を必須にすることで、「どういった年齢のどういった業種のユーザーがどういった商品を探しているのか」というデータを収集でき、ユーザーをより知る事で、サービスの質向上のヒントになると考えました。 | 適切な入力していない箇所に関して、日本語のエラーメッセージが出力されるようにしました。 |
 
+<br>
 
 | ログインページ | ログインページ（エラーメッセージ 有り） |
 | :---: | :---: |
 | [![Image from Gyazo](https://i.gyazo.com/e26de4a67d3bc7c161f271c776a71c26.png)](https://gyazo.com/e26de4a67d3bc7c161f271c776a71c26) | [![Image from Gyazo](https://i.gyazo.com/98b8fbb93a42ee0daff825f4cacd3a78.png)](https://gyazo.com/98b8fbb93a42ee0daff825f4cacd3a78) |
 | 最低限のユーザー情報の入力のみで、簡単にログインできるようにしました。 | 適切な入力していない箇所に関して、日本語のエラーメッセージが出力されるようにしました。 |
 
+<br>
 
 | 検索結果ページ（お気に入り登録 前） | 検索結果ページ（お気に入り登録 後） |
 | :---: | :---: |
 | [![Image from Gyazo](https://i.gyazo.com/1ec86911ce3517fdc83b0981f978beb2.png)](https://gyazo.com/1ec86911ce3517fdc83b0981f978beb2) | [![Image from Gyazo](https://i.gyazo.com/b407febf3347b8a2d14eb604ef187fe4.png)](https://gyazo.com/b407febf3347b8a2d14eb604ef187fe4) |
 | 連携しているECサイトの検索結果として、商品画像や在庫数量だけでなく、ECサイトへ遷移するLinkも表示することで、ユーザーがすぐに商品を購入できるようにしました。さらに、在庫の有無が一目でわかるように在庫の表示を作成しました。 | お気に入り登録することで、白黒のチェックボックスがオレンジに変化し、お気に入りにしている状態が分かりやすいように工夫しました。 |
 
+<br>
 
 | リマインド登録画面 | 検索結果ページ（リマインド登録 後） |
 | :---: | :---: |
 | [![Image from Gyazo](https://i.gyazo.com/8006cbc31712af1bb33cccae588b74d1.png)](https://gyazo.com/8006cbc31712af1bb33cccae588b74d1) | [![Image from Gyazo](https://i.gyazo.com/3dd901a74edd289f9b7a00b1ae126eb9.png)](https://gyazo.com/3dd901a74edd289f9b7a00b1ae126eb9) |
 | お気に入り登録した商品に限り、リマインドを設定することが可能になり、リマインド条件とリマインド方法をプルダウンより選択できるようにしました。 | リマインドを設定していると、白黒のチェックボックスがブルーに変化し、設定したリマインド条件とリマインド方法の内容が表示されます。リマインドの内容が表示されることで、ユーザーにとってリマインド設定の状況がわかりやすくなるように工夫しました。 |
 
+<br>
 
 | マイページ（チャート表示 前） | マイページ（チャート表示 後） |
 | :---: | :---: |
 | [![Image from Gyazo](https://i.gyazo.com/890f8099c26620f5bc250d7ec9e0e786.png)](https://gyazo.com/890f8099c26620f5bc250d7ec9e0e786) | [![Image from Gyazo](https://i.gyazo.com/4848b8ec4de6016e48af5429448f9230.png)](https://gyazo.com/4848b8ec4de6016e48af5429448f9230) |
 | マイページへ移動すると、お気に入りした商品の最新の在庫状況が一覧で表示されるようにし、いつ取得したデータなのかを明確にするために、在庫表示下部にデータを取得した時刻を表示するようにしました。 | 各お気に入り商品の下部にあるチャート表示ボタンをクリックすることで、3時間毎に収集した在庫、価格データのチャート図を表示できるようにしました。 |
+
+<br>
 
 | お気に入り削除機能 | ユーザー情報編集機能 |
 | :---: | :---: |
