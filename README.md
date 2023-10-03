@@ -6,13 +6,13 @@
 <br>
 
 # アプリケーション概要
-「買いたい時」に「賢く買える」アプリケーション
+### 「買いたい時」に「賢く買える」アプリケーション
 
 <br>
 <br>
 
 # URL
-https://smart-buyer.onrender.com/
+### https://smart-buyer.onrender.com/
 
 <br>
 <br>
