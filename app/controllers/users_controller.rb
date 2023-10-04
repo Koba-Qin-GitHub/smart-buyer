@@ -90,7 +90,7 @@ class UsersController < ApplicationController
         end
   
         @mouser_res_Stock = @response_data["SearchResults"]["Parts"][0]["AvailabilityInStock"]
-        @mouser_res_Price = @response_data["SearchResults"]["Parts"][0]["PriceBreaks"][0]["Price"][1..-1]
+        @mouser_res_Price = @response_data["SearchResults"]["Parts"][0]["PriceBreaks"][0]["Price"][1..-1].delete(",")
   
         # 取得したデータを「favorite_item_dateテーブル」に保存
         FavoriteItemData.create(favorite_id: favorite.id, stock: @mouser_res_Stock, price: @mouser_res_Price)
