@@ -1,6 +1,7 @@
 <%= render "shared/header" %>
 
   <div class="container">
+
     <div class="search_content">
       <div class="item_form">
       <%# 検索フォーム ：検索ボタンのクリックで「item登録」「APIへの検索」の処理が実行%>
@@ -11,9 +12,9 @@
         <% end %>
       </div>
     </div>
+    
 
     <div class="search_result">
-
 
       <div class="search_word">
         <p class="item_title">正式品番</p>
@@ -76,8 +77,7 @@
       <div class="item">
 
         <div class="company_name">
-          <%# <p>Mouser</p> %>
-          <img src="https://www.mouser.jp/images/mouser-reg-logo-trim.png?nosprite">
+          <%= link_to image_tag("mouser_logo.jpeg", class:"mouser_logo")%>
         </div>
 
         <div class="item_content">
@@ -112,8 +112,53 @@
             <% end %>
 
           </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="item">
+
+        <div class="company_name">
+          <%= link_to image_tag("digikey_logo.png", class:"digikey_logo")%>
+        </div>
+
+        <div class="item_content">
+        
+          <%# # DigiKey_APIのレスポンス %>
+          <div class="item_image">
+            <img src="<%=@digikey_res_Image%>", id = "result_Image">
+          </div>
+          <div class="item_body">
+            <p id = "result_PartNumber">正式品番：<%= @digikey_res_PartNumber %></p>
+            <p id = "result_Manufacturer">メーカー：<%= @digikey_res_Manufacturer %></p>
+            <p id = "result_Stock">在庫数量：<%= @digikey_res_Stock %> 個</p>
+            <p id = "result_Price">　単価　： ¥<%= @digikey_res_Price %> 〜</p>
+            <p>
+            　Link　：<a href="<%= @digikey_res_ItemUrl%>" target="_blank" id = "result_ItemUrl">ECサイト商品詳細ページへ</a>
+            </p>
+          </div>
+
+          <div class="item_stock_judge">
+
+            <% if @digikey_res_Stock.to_i >= 1 %>
+              <div class="judge_exist", id="stock_exist">
+                <div>
+                  <p class="judge_title">在庫あり</p>
+                  <p class="judge_stock">（<%= @digikey_res_Stock %> 個）</p>
+                </div>
+              </div>
+            <% else @digikey_res_Stock.to_i  == 0 %>
+              <div class="judge_none", id="stock_none">
+                <p class="judge_title">在庫無し</p>
+              </div>
+            <% end %>
+
+          </div>
             
         </div>
+
       </div>
     </div>
   </div>

@@ -14,6 +14,7 @@
   border-radius: 15px;
 
   margin: 0 auto;
+  margin-bottom: 30px;
   padding: 10px;
 
 }
@@ -160,6 +161,15 @@
 .company_name{
   height: 30%;
   margin: 0px auto;
+}
+
+.mouser_logo{
+  height: 110%;
+}
+
+.digikey_logo{
+  height: 90%;
+
 }
 
 .item_content{
