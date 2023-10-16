@@ -65,16 +65,16 @@
             </div>
             <div class="mypage_favorite_right">
               <% if FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].stock >= 1 %>
-                <div class="judge_exist", id="stock_exist">
-                  <p class="favorite_judge_title">在庫あり</p>
-                  <p class="favorite_judge_stock">（<%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].stock %> 個）</p>
+                <div class="mypage_judge_exist", id="stock_exist">
+                  <p class="mypage_favorite_judge_title">在庫あり</p>
+                  <p class="mypage_favorite_judge_stock">（<%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].stock %> 個）</p>
                 </div>
                 <div class="judge_time">
                   <%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].created_at.strftime('%m/%d %-H:%M') %>
                 </div>
               <% else %>
-                <div class="judge_none", id="stock_none"> 
-                  <p class="favorite_judge_title">在庫無し</p>
+                <div class="mypage_judge_none", id="stock_none"> 
+                  <p class="mypage_favorite_judge_title">在庫無し</p>
                 </div>
                 <div class="judge_time">
                   <%= FavoriteItemData.where(favorite_id: favorite.id).order(updated_at: :desc).limit(1)[0].created_at.strftime('%m/%d %-H:%M') %>

@@ -162,9 +162,14 @@
   margin: 0px auto;
 }
 
+.company_name > img {
+  height: 100%;
+}
+
 .item_content{
   height: 70%;
   display: flex;
+  justify-content: center;
 }
 
 .item_image{
@@ -174,20 +179,22 @@
 }
 
 #result_Image{
-  height: 90%;
-  
+  width: 100%;
 }
 
 
 .item_body{
   width: 70%;
+  /* font-size: 1.2vw; */
   font-size: 22px;
-  
+  padding: auto 0;
+  /* background-color: #ea352d; */
 }
 
 .item_body > p {
   width: 100%;
   margin-bottom: 10px;
+  line-height: 30px;
 }
 
 #result_ItemUrl{
@@ -217,6 +224,8 @@
   background-color: #A8D93D;
   color: #ffffff;
 }
+
+
 
 .judge_none{
   width: 80%;
@@ -269,10 +278,11 @@
 
 .explain_title{
   width: 30%;
+  height: 18%;
   margin: 100px auto 100px auto;
   padding: 5px 0;
   border-radius: 10px;
-  font-size: 35px;
+  font-size: 2vw;
   font-weight: bold;
   color: #ffffff;
   background-color: #11376B;
@@ -289,6 +299,7 @@
   align-items: center;
   font-weight: bold;
   margin: 30px 0;
+  font-size: 1.8vw;
   
 }
 
@@ -311,7 +322,7 @@
 
 .explain_list_word{
   width: 50%;
-  font-size: 30px;
+  font-size: 1.6vw;
   display: flex;
   text-align: center;
   background-color: #ffffff;
@@ -324,6 +335,7 @@
 
 .explain_list_image{
   width: 50%;
+  /* width: 0.5vw; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -375,9 +387,10 @@
 
 .sites_title{
   width: 38%;
+  /* height: 18%; */
   padding: 5px 0;
   border-radius: 10px;
-  font-size: 35px;
+  font-size: 1.8vw;
   font-weight: bold;
   color: #ffffff;
   background-color: #11376B;
@@ -434,4 +447,76 @@
 
 .item_show_footer{
   margin-top: 500px;
+}
+
+/* viewport------------------------------------------------------------------------------------------------------------------------ */
+
+/* タブレット表示サイズ（PC画面 半分） */
+@media (max-width: 1000px) {
+
+
+.search_word{
+  width: 100%;
+}
+
+
+
+.explain{
+  width: 90%;
+
+}
+
+.explain_title{
+  width: 100%;
+}
+
+
+.explain_content{
+  height: 100px;
+}
+
+.explain_list_title{
+  font-size: 3vw;
+}
+
+.explain_list_image{
+  display: none;
+}
+
+.explain_list_word {
+  width: 100%;
+  font-size: 3vw;
+}
+
+
+.search_result{
+  display: block;
+  /* align-items: center; */
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+.favorite_register{
+  margin-left: 40px;
+}
+
+.reminder_register{
+  margin-left: 40px;
+}
+
+
+.item_body{
+  font-size: 1em;
+}
+
+}
+
+
+/* スマホ表示サイズ */
+@media (max-width: 500px) {
+  
+
+  
+
 }
