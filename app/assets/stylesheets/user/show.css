@@ -53,7 +53,7 @@ h1 {
 
 .mypage_favorite{
   width: 80%;
-  height: 100px;
+  height: 100%;
   margin: 0px auto;
   margin-top: 50px;
   border: 1px solid;
@@ -76,9 +76,35 @@ h1 {
   height: 80%;
 }
 
-.mypage_favorite_right > .judge_exist{
+.mypage_favorite_right > .mypage_judge_exist{
   display: block;
 }
+
+.mypage_judge_exist{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  border-radius: 20px;
+  background-color: #A8D93D;
+  color: #ffffff;
+}
+
+.mypage_judge_none{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 20px;
+  background-color: #ea352d;
+  color: #ffffff;
+}
+
 
 .favorite_judge_title{
   font-size: 1.2vw;
@@ -88,9 +114,22 @@ h1 {
   font-size: 0.95vw;
 }
 
+.mypage_favorite_judge_title{
+  font-size: 1.2vw;
+}
+
+.mypage_favorite_judge_stock{
+  font-size: 0.95vw;
+}
+
 .judge_time{
   font-size: 12px;
   margin-top: 4px;
+}
+
+
+.mypage_judge_none{
+  height: 60px;
 }
 
 .mypage_favorite_info{
@@ -149,3 +188,68 @@ h1 {
 }
 
 
+
+
+/* * viewport------------------------------------------------------------------------------------------------------------------------ * */
+
+/* タブレット表示サイズ（PC画面 半分） */
+@media (max-width: 1000px) {
+  
+  .item_title{
+    font-size: 20px;
+  }
+  
+  .item_name{
+    font-size: 1.5em;
+  }
+
+  .mypage_favorite{
+    padding: 20px 0;
+  }
+
+  .mypage_favorite_left{
+    display: block;
+    width: 80%;
+  }
+
+  .mypage_favorite_right{
+    /* margin: 5px 0;
+    font-size: 20px; */
+    width: 20%;
+    height: 100%;
+  }
+
+  .mypage_judge_exist{
+    height: 100%;
+    margin-top: 20px;
+    padding: 40px 0;
+  }
+
+  .mypage_judge_none{
+    height: 100%;
+    margin-top: 20px;
+    padding: 40px 0;
+  }
+
+  .mypage_favorite_judge_title{
+    font-size: 0.9em;
+    height: 30px;
+    margin: auto 0;
+  }
+  
+  .mypage_favorite_judge_stock{
+    font-size: 0.6em;
+    height: 30px;
+  }
+  
+  }
+  
+  
+  
+  /* スマホ表示サイズ */
+  @media (max-width: 500px) {
+    
+ 
+  
+  }
+  
